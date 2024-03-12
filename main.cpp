@@ -1,5 +1,6 @@
 #include <iostream>
-#include "tinyxml.h"
+#include "tinyxml/tinyxml.h"
+
 #include "string"
 #include "vector"
 #include <typeinfo>
