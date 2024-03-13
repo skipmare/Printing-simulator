@@ -114,7 +114,6 @@ public:
 
 
 
-
     void output_info(){
         ofstream file("output.txt");
         for (Device& device : devices){
