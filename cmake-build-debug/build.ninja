@@ -79,6 +79,18 @@ build CMakeFiles/PSE_2023_2023.dir/tinyxml/tinyxmlparser.cpp.obj: CXX_COMPILER__
   OBJECT_DIR = CMakeFiles\PSE_2023_2023.dir
   OBJECT_FILE_DIR = CMakeFiles\PSE_2023_2023.dir\tinyxml
 
+build CMakeFiles/PSE_2023_2023.dir/SystemImporter.cpp.obj: CXX_COMPILER__PSE_2023_2023_unscanned_Debug C$:/Users/abdir/CLionProjects/PSE_2023-2023/SystemImporter.cpp || cmake_object_order_depends_target_PSE_2023_2023
+  DEP_FILE = CMakeFiles\PSE_2023_2023.dir\SystemImporter.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\PSE_2023_2023.dir
+  OBJECT_FILE_DIR = CMakeFiles\PSE_2023_2023.dir
+
+build CMakeFiles/PSE_2023_2023.dir/System.cpp.obj: CXX_COMPILER__PSE_2023_2023_unscanned_Debug C$:/Users/abdir/CLionProjects/PSE_2023-2023/System.cpp || cmake_object_order_depends_target_PSE_2023_2023
+  DEP_FILE = CMakeFiles\PSE_2023_2023.dir\System.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\PSE_2023_2023.dir
+  OBJECT_FILE_DIR = CMakeFiles\PSE_2023_2023.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target PSE_2023_2023
@@ -87,7 +99,7 @@ build CMakeFiles/PSE_2023_2023.dir/tinyxml/tinyxmlparser.cpp.obj: CXX_COMPILER__
 #############################################
 # Link the executable PSE_2023_2023.exe
 
-build PSE_2023_2023.exe: CXX_EXECUTABLE_LINKER__PSE_2023_2023_Debug CMakeFiles/PSE_2023_2023.dir/main.cpp.obj CMakeFiles/PSE_2023_2023.dir/tinyxml/tinystr.cpp.obj CMakeFiles/PSE_2023_2023.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/PSE_2023_2023.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/PSE_2023_2023.dir/tinyxml/tinyxmlparser.cpp.obj
+build PSE_2023_2023.exe: CXX_EXECUTABLE_LINKER__PSE_2023_2023_Debug CMakeFiles/PSE_2023_2023.dir/main.cpp.obj CMakeFiles/PSE_2023_2023.dir/tinyxml/tinystr.cpp.obj CMakeFiles/PSE_2023_2023.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/PSE_2023_2023.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/PSE_2023_2023.dir/tinyxml/tinyxmlparser.cpp.obj CMakeFiles/PSE_2023_2023.dir/SystemImporter.cpp.obj CMakeFiles/PSE_2023_2023.dir/System.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\PSE_2023_2023.dir

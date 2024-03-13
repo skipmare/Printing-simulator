@@ -9,5 +9,6 @@ add_executable(PSE_2023_2023
         tinyxml/tinyxml.cpp
         tinyxml/tinyxmlerror.cpp
         tinyxml/tinyxmlparser.cpp
-        DesignByContract.h
-        Xml_Importer.h)
+        SystemImporter.cpp
+        System.cpp
+)
