@@ -5,6 +5,7 @@
 #include "queue"
 #include "stack"
 #include "vector"
+#include "fstream"
 
 using namespace std;
 
@@ -59,6 +60,14 @@ private:
     queue<Job> jobs;
 
 public:
+    queue<Job>& getJobs() {
+        return jobs;
+    }
+    Job* getCurrentJob() const {
+        return currentJob;
+    }
+
+
     const std::string &getName() const {
         return name;
     }
@@ -93,42 +102,38 @@ public:
 class System {
 public:
     queue<Job> jobs;
-    stack<Device> devices;
+    vector<Device> devices;
 
     void addJob(Job job){
         jobs.push(job);
     }
 
-    Job getJob(){
-        Job job = jobs.front();
-        jobs.pop();
-        return job;
-    }
-
     void addDevice(Device device){
-        devices.push(device);
-    }
-
-    Device getDevice() {
-        Device device = devices.top();
-        devices.pop();
-        return device;
-
+        devices.push_back(device);
     }
 
 
-    void print(){
-        cout << "Jobs: " << '\n';
-        while (!jobs.empty()){
-            jobs.front().print();
-            jobs.pop();
+
+
+    void output_info(){
+        ofstream file("output.txt");
+        for (Device& device : devices){
+            file <<device.getName()<<" (CO2: " << device.getEmission() <<"g/page):" <<std::endl;
+            file <<"    * Current:" <<std::endl;
+            file <<"        [#"<<device.getCurrentJob()->getJobNumber()<<"|" << device.getCurrentJob()->getUserName() <<"]" << std::endl;
+            file  <<"    * Queue:" <<std::endl;
+            while (!device.getJobs().empty()){
+
+                Job job = device.getJobs().front();
+                device.getJobs().pop();
+                device.getJobs().push(job);
+
+                file <<"        [#"<<job.getJobNumber()<<"|" << job.getUserName() <<"]"<< std::endl;
+            }
+
         }
-        cout << "Devices: " << '\n';
-        while (!devices.empty()){
-            devices.top().print();
-            devices.pop();
-        }
     }
+
 
 
 
