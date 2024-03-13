@@ -55,6 +55,8 @@ private:
     std::string name;
     int emission;
     int speed;
+    Job* currentJob;
+    queue<Job> jobs;
 
 public:
     const std::string &getName() const {
@@ -88,9 +90,6 @@ public:
     }
 };
 
-
-
-
 class System {
 public:
     queue<Job> jobs;
@@ -105,7 +104,6 @@ public:
         jobs.pop();
         return job;
     }
-
 
     void addDevice(Device device){
         devices.push(device);
