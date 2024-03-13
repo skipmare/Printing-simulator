@@ -15,6 +15,14 @@ enum SuccessEnum {ImportAborted, PartialImport, Success};
 
 class SystemImporter {
 public:
+    /*
+     * Import een systeem uit een XML bestand.
+     * als er een fout optreedt, wordt de foutmelding naar errorStream geschreven.
+     * return ImportAborted als het bestand niet geladen kan worden.
+     * return PartialImport als het bestand wel geladen kan worden, maar niet alle informatie correct is.
+     * return Success als het bestand geladen kan worden en alle informatie correct is.
+     * \n
+     */
     static SuccessEnum importSystem(const char* filename, std::ostream& errorStream);
 
 
