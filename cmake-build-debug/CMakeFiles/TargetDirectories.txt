@@ -1,3 +1,4 @@
-C:/Users/abdir/CLionProjects/PSE_2023-2023/cmake-build-debug/CMakeFiles/PSE_2023_2023.dir
+C:/Users/abdir/CLionProjects/PSE_2023-2023/cmake-build-debug/CMakeFiles/release_target.dir
+C:/Users/abdir/CLionProjects/PSE_2023-2023/cmake-build-debug/CMakeFiles/debug_target.dir
 C:/Users/abdir/CLionProjects/PSE_2023-2023/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/abdir/CLionProjects/PSE_2023-2023/cmake-build-debug/CMakeFiles/rebuild_cache.dir

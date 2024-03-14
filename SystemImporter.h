@@ -23,9 +23,9 @@ public:
      * return ImportAborted als het bestand niet geladen kan worden.
      * return PartialImport als het bestand wel geladen kan worden, maar niet alle informatie correct is.
      * return Success als het bestand geladen kan worden en alle informatie correct is.
-     * \n
+     * \n REQUIRE(system.properlyInitialized(), "system wasn't initialized when passed to SystemImporter::importGame");
      */
-    static SuccessEnum importSystem(const char* filename, std::ostream& errorStream);
+    static SuccessEnum importSystem(const char* filename, std::ostream& errorStream, System& system);
 
 
 
