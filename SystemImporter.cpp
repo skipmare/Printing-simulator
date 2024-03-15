@@ -4,6 +4,7 @@
 
 
 SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &errorStream, System& system) {
+    bool isConsistent = true;
     SuccessEnum endresult = Success;
     TiXmlDocument doc;
     if (!doc.LoadFile(filename)) {
@@ -29,6 +30,9 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                     newDevice.setName(name->GetText());
                     newDevice.setEmission(stoi(emission->GetText()));
                     newDevice.setSpeed(stoi(speed->GetText()));
+                    if(newDevice.getEmission() < 0 || newDevice.getSpeed() < 0){
+                        isConsistent = false;
+                    }
                     system.addDevice(newDevice);
                 } catch (std::exception& e){
                     errorStream << "Partial import: " << e.what() << std::endl;
@@ -49,6 +53,9 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                     newJob.setJobNumber(stoi(jobNumber->GetText()));
                     newJob.setPageCount(stoi(pageCount->GetText()));
                     newJob.setUserName(userName->GetText());
+                    if(newJob.getPageCount() < 0 || newJob.getJobNumber() < 0){
+                        isConsistent = false;
+                    }
                     system.addJob(newJob);
                 } catch (std::exception &e) {
                     errorStream << "Partial import: " << e.what() << std::endl;
@@ -69,6 +76,11 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
     }
 
+    if (!isConsistent){
+        errorStream << "XML IMPORT ABORTED: Inconsistent printing system." << std::endl;
+        //system.clear(); Nog nodig om te implementeren
+        return ImportAborted;
+    }
 
 
     doc.Clear();
