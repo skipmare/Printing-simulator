@@ -11,95 +11,9 @@ using namespace std;
 
 #ifndef PSE_2023_2023_SYSTEM_H
 #define PSE_2023_2023_SYSTEM_H
+#include "Objects/jobs.h"
+#include "Objects/devices.h"
 
-class Job {
-private:
-    int jobNumber;
-    int pageCount;
-    string userName;
-
-public:
-
-    int getJobNumber() const {
-        return jobNumber;
-    }
-
-    void setJobNumber(int jobNumber) {
-      this->jobNumber = jobNumber;}
-
-    int getPageCount() const {
-        return pageCount;
-    }
-
-    void setPageCount(int pageCount) {
-        this->pageCount = pageCount;
-    }
-
-    const string &getUserName() const {
-        return userName;
-    }
-
-    void setUserName(const string &userName) {
-        this->userName = userName;
-    }
-
-    void print(){
-        cout << "Job number: " << jobNumber << '\n';
-        cout << "Page count: " << pageCount << '\n';
-        cout << "User name: " << userName << '\n';
-    }
-
-};
-
-class Device {
-private:
-    std::string name;
-    int emission;
-    int speed;
-    Job* currentJob = nullptr;
-    queue<Job> jobs;
-
-public:
-    queue<Job>& getJobs() {
-        return jobs;
-    }
-    Job* getCurrentJob() {
-        return currentJob;
-    }
-    void set_current_job(Job* job){
-        currentJob = job;
-    }
-
-    const std::string &getName() const {
-        return name;
-    }
-
-    int getEmission() const {
-        return emission;
-    }
-
-    int getSpeed() const {
-        return speed;
-    }
-
-    void setName(const std::string &name) {
-        this->name = name;
-    }
-
-    void setEmission(int emission) {
-        this->emission = emission;
-    }
-
-    void setSpeed(int speed) {
-        this->speed = speed;
-    }
-
-    void print(){
-        cout << "Name: " << name << '\n';
-        cout << "Emission: " << emission << '\n';
-        cout << "Speed: " << speed << '\n';
-    }
-};
 
 class System {
 public:
