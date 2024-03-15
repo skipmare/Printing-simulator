@@ -58,13 +58,69 @@ TEST_F(SystemInputTest, InputHappyDay) {
     << "\t</jobs>\n"
    << "</system>";
     myfile.close();
+    std::ofstream errStream;
 
-    importResult = SystemImporter::importSystem("../test.xml", cerr, system_);
-    ASSERT_EQ(Success, importResult);
+    errStream.open("../TestInput/happydayInputERR.txt");
+    importResult = SystemImporter::importSystem("../test.xml", errStream, system_);
+    errStream.close();
+
+    EXPECT_TRUE(FileIsEmpty("../TestInput/happydayInputERR.txt"));
+    EXPECT_EQ(Success, importResult);
 
 }
 
 
+TEST_F(SystemInputTest, InputConsistentSystem) {
+    ASSERT_TRUE(DirectoryExists("../TestInput"));
+
+    SuccessEnum importResult;
+    int fileCounter = 1;
+    string filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
+    string OutputFileName = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".txt";
+    std::ofstream errStream;
+
+    while (FileExists(filename)) {
+        errStream.open(OutputFileName);
+        importResult = SystemImporter::importSystem(filename.c_str(), errStream, system_);
+        errStream.close();
+
+        EXPECT_TRUE(FileIsEmpty("../TestInput/InconsistentInputERR.txt"));
+        EXPECT_EQ(ImportAborted, importResult);
+
+        fileCounter++;
+        filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
+        OutputFileName = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".txt";
+    }
+    EXPECT_EQ(1, fileCounter);
+}
+
+
+
+
+
+TEST_F(SystemInputTest, InputXMLSyntaxErrors) {
+    ASSERT_TRUE(DirectoryExists("../TestInput"));
+
+    SuccessEnum importResult;
+    int fileCounter = 1;
+    string filename = "../TestInput/InputXMLSyntaxError" + to_string(fileCounter) + ".xml";
+    string OutputFileName = "../TestInput/InputXMLSyntaxError" + to_string(fileCounter) + ".txt";
+    std::ofstream errStream;
+
+    while (FileExists(filename)) {
+        errStream.open(OutputFileName);
+        importResult = SystemImporter::importSystem(filename.c_str(), errStream, system_);
+        errStream.close();
+
+        EXPECT_TRUE(FileIsEmpty("../TestInput/InconsistentInputERR.txt"));
+        EXPECT_EQ(ImportAborted, importResult);
+
+        fileCounter++;
+        filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
+        OutputFileName = "../TestInput/InputXMLSyntaxError" + to_string(fileCounter) + ".txt";
+    }
+    EXPECT_EQ(1, fileCounter);
+}
 
 
 
