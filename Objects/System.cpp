@@ -3,9 +3,7 @@
 //
 
 #include "System.h"
-//
-// Created by abdir on 13/03/2024.
-//
+
 #include "iostream"
 #include "queue"
 #include "stack"

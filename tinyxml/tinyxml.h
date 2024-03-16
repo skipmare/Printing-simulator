@@ -171,7 +171,7 @@ const TiXmlEncoding TIXML_DEFAULT_ENCODING = TIXML_ENCODING_UNKNOWN;
 
 /** TiXmlBase is a base class for every class in TinyXml.
 	It does little except to establish that TinyXml classes
-	can be printed and provide some utility functions.
+	can be printed and provide InputXMLSyntaxError4.xml utility functions.
 
 	In XML, the document and elements can contain
 	other elements and other types of nodes.
@@ -898,7 +898,7 @@ private:
 
 	This version is implemented with circular lists because:
 		- I like circular lists
-		- it demonstrates some independence from the (typical) doubly linked list.
+		- it demonstrates InputXMLSyntaxError4.xml independence from the (typical) doubly linked list.
 */
 class TiXmlAttributeSet
 {

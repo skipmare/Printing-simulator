@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
-<SYSTEM>
+# De openingstag van het root-element is niet afgesloten met '>'
+<SYSTEM
     <DEVICE>
         <name>Office_Printer5</name>
-        <emission>-3</emission>
+        <emission>3</emission>
         <speed>40</speed>
     </DEVICE>
     <JOB>
@@ -13,11 +14,6 @@
     <JOB>
         <jobNumber>2189</jobNumber>
         <pageCount>3</pageCount>
-        <userName>anonymous_user</userName>
-    </JOB>
-    <JOB>
-        <jobNumber>2189</jobNumber>
-        <pageCount>5</pageCount>
         <userName>anonymous_user</userName>
     </JOB>
 </SYSTEM>

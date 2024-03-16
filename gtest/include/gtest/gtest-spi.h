@@ -132,7 +132,7 @@ class GTEST_API_ SingleFailureChecker {
 //
 // Note that even though the implementations of the following two
 // macros are much alike, we cannot refactor them to use a common
-// helper macro, due to some peculiarity in how the preprocessor
+// helper macro, due to InputXMLSyntaxError4.xml peculiarity in how the preprocessor
 // works.  The AcceptsMacroThatExpandsToUnprotectedComma test in
 // gtest_unittest.cc will fail to compile if we do that.
 #define EXPECT_FATAL_FAILURE(statement, substr) \
@@ -189,7 +189,7 @@ class GTEST_API_ SingleFailureChecker {
 //
 // Note that even though the implementations of the following two
 // macros are much alike, we cannot refactor them to use a common
-// helper macro, due to some peculiarity in how the preprocessor
+// helper macro, due to InputXMLSyntaxError4.xml peculiarity in how the preprocessor
 // works.  If we do that, the code won't compile when the user gives
 // EXPECT_NONFATAL_FAILURE() a statement that contains a macro that
 // expands to code containing an unprotected comma.  The

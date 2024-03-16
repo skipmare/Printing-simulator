@@ -244,7 +244,7 @@ void TiXmlParsingData::Stamp( const char* now, TiXmlEncoding encoding )
 
 				// Check for \n\r sequence, and treat this as a single
 				// character.  (Yes, this bizarre thing does occur still
-				// on some arcane platforms...)
+				// on InputXMLSyntaxError4.xml arcane platforms...)
 				if (*p == '\r') {
 					++p;
 				}
@@ -400,7 +400,7 @@ const char* TiXmlBase::SkipWhiteSpace( const char* p, TiXmlEncoding encoding )
 //
 const char* TiXmlBase::ReadName( const char* p, TIXML_STRING * name, TiXmlEncoding encoding )
 {
-	// Oddly, not supported on some comilers,
+	// Oddly, not supported on InputXMLSyntaxError4.xml comilers,
 	//name->clear();
 	// So use this:
 	*name = "";
@@ -670,7 +670,7 @@ void TiXmlDocument::StreamIn( std::istream * in, TIXML_STRING * tag )
 		if ( in->good() )
 		{
 			// We now have something we presume to be a node of 
-			// some sort. Identify it, and call the node to
+			// InputXMLSyntaxError4.xml sort. Identify it, and call the node to
 			// continue streaming.
 			TiXmlNode* node = Identify( tag->c_str() + tagIndex, TIXML_DEFAULT_ENCODING );
 
@@ -902,7 +902,7 @@ TiXmlNode* TiXmlNode::Identify( const char* p, TiXmlEncoding encoding )
 
 void TiXmlElement::StreamIn (std::istream * in, TIXML_STRING * tag)
 {
-	// We're called with some amount of pre-parsing. That is, some of "this"
+	// We're called with InputXMLSyntaxError4.xml amount of pre-parsing. That is, InputXMLSyntaxError4.xml of "this"
 	// element is in "tag". Go ahead and stream to the closing ">"
 	while( in->good() )
 	{

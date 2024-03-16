@@ -9,7 +9,7 @@
 
 using namespace std;
 
-#include "../System.h"
+#include "../Objects/System.h"
 #include "../SystemImporter.h"
 #include "../Utils.h"
 
@@ -40,23 +40,23 @@ TEST_F(SystemInputTest, InputHappyDay) {
 
     myfile.open("../TestInput/happyday.xml");
     myfile << "<?xml version=\"1.0\" ?>\n"
-    <<"<system>\n"
-    << "\t<devices>\n"
+    <<"<SYSTEM>\n"
+    << "\t<DEVICE>\n"
     << "\t\t<name>Office_Printer5</name>\n"
     << "\t\t<emission>5</emission>\n"
     << "\t\t<speed>5</speed>\n"
-    << "\t</devices>\n"
-    << "\t<jobs>\n"
+    << "\t</DEVICE>\n"
+    << "\t<JOB>\n"
     << "\t\t<jobNumber>89751</jobNumber>\n"
     << "\t\t<pageCount>2</pageCount>\n"
     << "\t\t<userName>SergeDemeyer</userName>\n"
-    << "\t</jobs>\n"
-    << "\t<jobs>\n"
+    << "\t</JOB>\n"
+    << "\t<JOB>\n"
     << "\t\t<jobNumber>2189</jobNumber>\n"
     << "\t\t<pageCount>3</pageCount>\n"
     << "\t\t<userName>anonymous_user</userName>\n"
-    << "\t</jobs>\n"
-   << "</system>";
+    << "\t</JOB>\n"
+   << "</SYSTEM>";
     myfile.close();
     std::ofstream errStream;
 
@@ -105,7 +105,7 @@ TEST_F(SystemInputTest, InputInconsistency) {
 
 
 
-/*
+
 TEST_F(SystemInputTest, InputXMLSyntaxErrors) {
     ASSERT_TRUE(DirectoryExists("../TestInput"));
 
@@ -120,23 +120,23 @@ TEST_F(SystemInputTest, InputXMLSyntaxErrors) {
         importResult = SystemImporter::importSystem(filename.c_str(), errStream, system_);
         errStream.close();
 
-        EXPECT_TRUE(FileIsEmpty("../TestInput/InconsistentInputERR.txt"));
         EXPECT_EQ(ImportAborted, importResult);
 
+
         fileCounter++;
-        filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
+        filename = "../TestInput/InputXMLSyntaxError" + to_string(fileCounter) + ".xml";
         OutputFileName = "../TestInput/InputXMLSyntaxError" + to_string(fileCounter) + ".txt";
 
         system_.clear();
         EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
     }
-    EXPECT_EQ(1, fileCounter);
+    EXPECT_EQ(5, fileCounter);
 }
 
 
 
 
-
+/*
 TEST_F(SystemInputTest, InputLegalSystem) {
     ASSERT_TRUE(DirectoryExists("../TestInput"));
 
