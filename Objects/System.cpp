@@ -40,7 +40,6 @@ using namespace std;
         for (Device& device : devices){
             if(device.getCurrentJob() == nullptr){
                 if (!jobs.empty()){
-                    // You can't store the address of a local variable; you need to dynamically allocate the Job object
                     Job* job = new Job(jobs.front());
                     jobs.pop();
                     device.set_current_job(job);

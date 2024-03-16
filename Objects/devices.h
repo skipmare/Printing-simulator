@@ -33,7 +33,6 @@ public:
     void setSpeed(int xspeed);
     void print();
 
-    void do_job();
 
 };
 
