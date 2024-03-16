@@ -83,6 +83,24 @@ public:
         }
     }
 
+    void clear_jobs(){
+        while (!jobs.empty()){
+            jobs.pop();
+        }
+    }
+
+
+    void clear_devices(){
+        devices.clear();
+    }
+
+    void clear(){
+        clear_jobs();
+        clear_devices();
+    }
+
+
+
 
 
 

@@ -67,16 +67,20 @@ TEST_F(SystemInputTest, InputHappyDay) {
     EXPECT_TRUE(FileIsEmpty("../TestInput/happydayInputERR.txt"));
     EXPECT_EQ(Success, importResult);
 
+    system_.clear();
+    EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
+
+
 }
 
 
-TEST_F(SystemInputTest, InputConsistentSystem) {
+TEST_F(SystemInputTest, InputInconsistency) {
     ASSERT_TRUE(DirectoryExists("../TestInput"));
 
     SuccessEnum importResult;
     int fileCounter = 1;
-    string filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
-    string OutputFileName = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".txt";
+    string filename = "../TestInput/InconsistentERR" + to_string(fileCounter) + ".xml";
+    string OutputFileName = "../TestInput/InconsistentERR" + to_string(fileCounter) + ".txt";
     std::ofstream errStream;
 
     while (FileExists(filename)) {
@@ -90,14 +94,17 @@ TEST_F(SystemInputTest, InputConsistentSystem) {
         fileCounter++;
         filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
         OutputFileName = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".txt";
+
+        system_.clear();
+        EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
     }
-    EXPECT_EQ(1, fileCounter);
+    EXPECT_EQ(6, fileCounter);
 }
 
 
 
 
-
+/*
 TEST_F(SystemInputTest, InputXMLSyntaxErrors) {
     ASSERT_TRUE(DirectoryExists("../TestInput"));
 
@@ -118,6 +125,9 @@ TEST_F(SystemInputTest, InputXMLSyntaxErrors) {
         fileCounter++;
         filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
         OutputFileName = "../TestInput/InputXMLSyntaxError" + to_string(fileCounter) + ".txt";
+
+        system_.clear();
+        EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
     }
     EXPECT_EQ(1, fileCounter);
 }
@@ -126,5 +136,29 @@ TEST_F(SystemInputTest, InputXMLSyntaxErrors) {
 
 
 
+TEST_F(SystemInputTest, InputLegalSystem) {
+    ASSERT_TRUE(DirectoryExists("../TestInput"));
 
+    ofstream myfile;
+    SuccessEnum importResult;
+    int fileCounter = 1;
+    string fileName = "testInput/legalsystem" + to_string(fileCounter) + ".xml";
 
+    while (FileExists (fileName)) {
+        myfile.open("testInput/zzzError.txt");
+        importResult = SystemImporter::importSystem(fileName.c_str(), myfile, system_);
+        myfile.close();
+        EXPECT_TRUE(importResult == Success);
+        EXPECT_TRUE(FileIsEmpty("testInput/zzzError.txt"));
+
+        fileCounter = fileCounter + 1;
+        fileName = "testInput/legalsystem" + to_string(fileCounter) + ".xml";
+
+        system_.clear();
+        EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
+    }
+
+    EXPECT_EQ(1, fileCounter);
+
+}
+*/

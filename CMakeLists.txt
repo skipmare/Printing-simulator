@@ -24,13 +24,17 @@ set(RELEASE_SOURCE_FILES SystemMain.cpp
         tinyxml/tinyxmlparser.cpp
         SystemImporter.cpp
         System.cpp
-        Utils.cpp)
+        Utils.cpp
+        Objects/devices.cpp
+        Objects/jobs.cpp)
 
 # Set source files for DEBUG target
 # Only add cpp files, no h files!
 set(DEBUG_SOURCE_FILES ./Tests/SystemInputTest.cpp ./Tests/SystemTests.cpp System.cpp
         Utils.cpp SystemImporter.cpp
-        tinyxml/tinystr.cpp tinyxml/tinyxml.cpp tinyxml/tinyxmlerror.cpp tinyxml/tinyxmlparser.cpp)
+        tinyxml/tinystr.cpp tinyxml/tinyxml.cpp tinyxml/tinyxmlerror.cpp tinyxml/tinyxmlparser.cpp
+        Objects/devices.cpp
+        Objects/jobs.cpp)
 
 # Create RELEASE target
 add_executable(release_target ${RELEASE_SOURCE_FILES})

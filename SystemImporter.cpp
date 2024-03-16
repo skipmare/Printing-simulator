@@ -1,10 +1,12 @@
 #include "SystemImporter.h"
 #include "DesignByContract.h"
 #include "tinyxml/tinyxml.h"
+#include <set>
 
 
 SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &errorStream, System& system) {
     bool isConsistent = true;
+    std::set<int> jobNumbers;
     SuccessEnum endresult = Success;
     TiXmlDocument doc;
     if (!doc.LoadFile(filename)) {
@@ -40,7 +42,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
                 }
             } else {
-                errorStream << "Partial import: Device is missing information." << std::endl;
+                errorStream << "Partial import: Device has invalid information." << std::endl;
                 endresult = PartialImport;
             }
         } else if (elemName == "JOB") {
@@ -56,6 +58,9 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                     if(newJob.getPageCount() < 0 || newJob.getJobNumber() < 0){
                         isConsistent = false;
                     }
+                    if (jobNumbers.find(newJob.getJobNumber()) != jobNumbers.end()){
+                        isConsistent = false;
+                    }
                     system.addJob(newJob);
                 } catch (std::exception &e) {
                     errorStream << "Partial import: " << e.what() << std::endl;
@@ -69,7 +74,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
             }
 
         } else {
-            errorStream << "Unrecognizable element: " << elemName << std::endl;
+            errorStream << "Partial import: Unrecognizable element <" << elemName << ">" << std::endl;
             endresult = PartialImport;
             continue;
         }
@@ -78,7 +83,6 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
     if (!isConsistent){
         errorStream << "XML IMPORT ABORTED: Inconsistent printing system." << std::endl;
-        //system.clear(); Nog nodig om te implementeren
         return ImportAborted;
     }
 
