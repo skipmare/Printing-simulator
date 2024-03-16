@@ -35,7 +35,7 @@
 // included by any test program that uses Google Test.
 //
 // IMPORTANT NOTE: Due to limitation of the C++ language, we have to
-// leave some internal implementation details in this header file.
+// leave InputXMLSyntaxError4.xml internal implementation details in this header file.
 // They are clearly marked by comments like this:
 //
 //   // INTERNAL IMPLEMENTATION - DO NOT USE IN A USER PROGRAM.
@@ -166,7 +166,7 @@ void ReportFailureInUnknownLocation(TestPartResult::Type result_type,
 
 }  // namespace internal
 
-// The friend relationship of some of these classes is cyclic.
+// The friend relationship of InputXMLSyntaxError4.xml of these classes is cyclic.
 // If we don't forward declare them the compiler might confuse the classes
 // in friendship clauses with same named classes on the scope.
 class Test;
@@ -932,7 +932,7 @@ class GTEST_API_ TestCase {
 // destructor, as:
 //
 //   1. You cannot safely throw from a destructor.  This is a problem
-//      as in some cases Google Test is used where exceptions are enabled, and
+//      as in InputXMLSyntaxError4.xml cases Google Test is used where exceptions are enabled, and
 //      we may want to implement ASSERT_* using exceptions where they are
 //      available.
 //   2. You cannot use ASSERT_* directly in a constructor or
@@ -1201,7 +1201,7 @@ class GTEST_API_ UnitTest {
   // Returns true iff the unit test passed (i.e. all test cases passed).
   bool Passed() const;
 
-  // Returns true iff the unit test failed (i.e. some test case failed
+  // Returns true iff the unit test failed (i.e. InputXMLSyntaxError4.xml test case failed
   // or something outside of all tests failed).
   bool Failed() const;
 
@@ -1283,7 +1283,7 @@ class GTEST_API_ UnitTest {
   void PopGTestTrace()
       GTEST_LOCK_EXCLUDED_(mutex_);
 
-  // Protects mutable state in *impl_.  This is mutable as some const
+  // Protects mutable state in *impl_.  This is mutable as InputXMLSyntaxError4.xml const
   // methods need to lock it too.
   mutable internal::Mutex mutex_;
 
@@ -1872,7 +1872,7 @@ class TestWithParam : public Test, public WithParamInterface<T> {
 #define GTEST_FAIL() GTEST_FATAL_FAILURE_("Failed")
 
 // Define this macro to 1 to omit the definition of FAIL(), which is a
-// generic name and clashes with some other libraries.
+// generic name and clashes with InputXMLSyntaxError4.xml other libraries.
 #if !GTEST_DONT_DEFINE_FAIL
 # define FAIL() GTEST_FAIL()
 #endif
@@ -1881,7 +1881,7 @@ class TestWithParam : public Test, public WithParamInterface<T> {
 #define GTEST_SUCCEED() GTEST_SUCCESS_("Succeeded")
 
 // Define this macro to 1 to omit the definition of SUCCEED(), which
-// is a generic name and clashes with some other libraries.
+// is a generic name and clashes with InputXMLSyntaxError4.xml other libraries.
 #if !GTEST_DONT_DEFINE_SUCCEED
 # define SUCCEED() GTEST_SUCCEED()
 #endif
@@ -2005,7 +2005,7 @@ class TestWithParam : public Test, public WithParamInterface<T> {
   ASSERT_PRED_FORMAT2(::testing::internal::CmpHelperGT, val1, val2)
 
 // Define macro GTEST_DONT_DEFINE_ASSERT_XY to 1 to omit the definition of
-// ASSERT_XY(), which clashes with some users' own code.
+// ASSERT_XY(), which clashes with InputXMLSyntaxError4.xml users' own code.
 
 #if !GTEST_DONT_DEFINE_ASSERT_EQ
 # define ASSERT_EQ(val1, val2) GTEST_ASSERT_EQ(val1, val2)
@@ -2237,7 +2237,7 @@ bool StaticAssertTypeEq() {
               ::testing::Test, ::testing::internal::GetTestTypeId())
 
 // Define this macro to 1 to omit the definition of TEST(), which
-// is a generic name and clashes with some other libraries.
+// is a generic name and clashes with InputXMLSyntaxError4.xml other libraries.
 #if !GTEST_DONT_DEFINE_TEST
 # define TEST(test_case_name, test_name) GTEST_TEST(test_case_name, test_name)
 #endif

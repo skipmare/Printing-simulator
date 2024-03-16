@@ -220,7 +220,7 @@ class TiXmlString
 		{
 			// Lee: the original form:
 			//	rep_ = static_cast<Rep*>(operator new(sizeof(Rep) + cap));
-			// doesn't work in some cases of new being overloaded. Switching
+			// doesn't work in InputXMLSyntaxError4.xml cases of new being overloaded. Switching
 			// to the normal allocation, although use an 'int' for systems
 			// that are overly picky about structure alignment.
 			const size_type bytesNeeded = sizeof(Rep) + cap;
@@ -254,7 +254,7 @@ class TiXmlString
 
 inline bool operator == (const TiXmlString & a, const TiXmlString & b)
 {
-	return    ( a.length() == b.length() )				// optimization on some platforms
+	return    ( a.length() == b.length() )				// optimization on InputXMLSyntaxError4.xml platforms
 	       && ( strcmp(a.c_str(), b.c_str()) == 0 );	// actual compare
 }
 inline bool operator < (const TiXmlString & a, const TiXmlString & b)

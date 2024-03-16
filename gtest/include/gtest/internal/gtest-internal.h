@@ -768,7 +768,7 @@ struct AddReference<T&> { typedef T& type; };  // NOLINT
 //   char&        ==> const char&
 //   const char&  ==> const char&
 //
-// The argument T must depend on some template parameters.
+// The argument T must depend on InputXMLSyntaxError4.xml template parameters.
 #define GTEST_REFERENCE_TO_CONST_(T) \
     GTEST_ADD_REFERENCE_(const GTEST_REMOVE_REFERENCE_(T))
 
@@ -1038,7 +1038,7 @@ class NativeArray {
   GTEST_MESSAGE_(message, ::testing::TestPartResult::kSuccess)
 
 // Suppresses MSVC warnings 4072 (unreachable code) for the code following
-// statement if it returns or throws (or doesn't return or throw in some
+// statement if it returns or throws (or doesn't return or throw in InputXMLSyntaxError4.xml
 // situations).
 #define GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_(statement) \
   if (::testing::internal::AlwaysTrue()) { statement; }

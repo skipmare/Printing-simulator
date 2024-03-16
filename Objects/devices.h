@@ -32,6 +32,8 @@ public:
     void setEmission(int xemission);
     void setSpeed(int xspeed);
     void print();
+
+
 };
 
 #endif

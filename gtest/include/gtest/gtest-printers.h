@@ -55,7 +55,7 @@
 // pointer value and the NUL-terminated string it points to are
 // printed.
 //
-// We also provide some convenient wrappers:
+// We also provide InputXMLSyntaxError4.xml convenient wrappers:
 //
 //   // Prints a value to a string.  For a (const or not) char
 //   // pointer, the NUL-terminated string (but not the pointer) is
@@ -616,7 +616,7 @@ void UniversalPrintArray(const T* begin, size_t len, ::std::ostream* os) {
     const size_t kThreshold = 18;
     const size_t kChunkSize = 8;
     // If the array has more than kThreshold elements, we'll have to
-    // omit some details by printing only the first and the last
+    // omit InputXMLSyntaxError4.xml details by printing only the first and the last
     // kChunkSize elements.
     // TODO(wan@google.com): let the user control the threshold using a flag.
     if (len <= kThreshold) {
@@ -641,7 +641,7 @@ GTEST_API_ void UniversalPrintArray(
 template <typename T, size_t N>
 class UniversalPrinter<T[N]> {
  public:
-  // Prints the given array, omitting some elements when there are too
+  // Prints the given array, omitting InputXMLSyntaxError4.xml elements when there are too
   // many.
   static void Print(const T (&a)[N], ::std::ostream* os) {
     UniversalPrintArray(a, N, os);

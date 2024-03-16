@@ -3,9 +3,7 @@
 //
 
 #include "System.h"
-//
-// Created by abdir on 13/03/2024.
-//
+
 #include "iostream"
 #include "queue"
 #include "stack"
@@ -42,7 +40,6 @@ using namespace std;
         for (Device& device : devices){
             if(device.getCurrentJob() == nullptr){
                 if (!jobs.empty()){
-                    // You can't store the address of a local variable; you need to dynamically allocate the Job object
                     Job* job = new Job(jobs.front());
                     jobs.pop();
                     device.set_current_job(job);
@@ -126,4 +123,8 @@ using namespace std;
     void System::clear(){
         clear_jobs();
         clear_devices();
+    }
+
+    vector<Device> System::getDevices() {
+        return devices;
     }

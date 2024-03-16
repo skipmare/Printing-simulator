@@ -33,6 +33,8 @@ public:
 
     void addDevice(Device device);
 
+    vector<Device> getDevices();
+
     void assigning_jobs();
 
     void output_info(std::string namefile);

@@ -2,10 +2,11 @@
 <SYSTEM>
     <DEVICE>
         <name>Office_Printer5</name>
-        <emission>-3</emission>
+        <emission>3</emission>
         <speed>40</speed>
     </DEVICE>
-    <JOB>
+    # JOBz heeft geen matching closing tag
+    <JOBz>
         <jobNumber>89751</jobNumber>
         <pageCount>2</pageCount>
         <userName>SergeDemeyer</userName>
@@ -13,11 +14,6 @@
     <JOB>
         <jobNumber>2189</jobNumber>
         <pageCount>3</pageCount>
-        <userName>anonymous_user</userName>
-    </JOB>
-    <JOB>
-        <jobNumber>2189</jobNumber>
-        <pageCount>5</pageCount>
         <userName>anonymous_user</userName>
     </JOB>
 </SYSTEM>

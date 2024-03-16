@@ -2,7 +2,12 @@
 <SYSTEM>
     <DEVICE>
         <name>Office_Printer5</name>
-        <emission>-3</emission>
+        #missing emission
+        <speed>40</speed>
+    </DEVICE>
+    <DEVICE>
+        <name>Office_Printer5</name>
+        <emission>3</emission>
         <speed>40</speed>
     </DEVICE>
     <JOB>
@@ -13,11 +18,6 @@
     <JOB>
         <jobNumber>2189</jobNumber>
         <pageCount>3</pageCount>
-        <userName>anonymous_user</userName>
-    </JOB>
-    <JOB>
-        <jobNumber>2189</jobNumber>
-        <pageCount>5</pageCount>
         <userName>anonymous_user</userName>
     </JOB>
 </SYSTEM>

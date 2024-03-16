@@ -34,7 +34,7 @@
 // This header file defines the Message class.
 //
 // IMPORTANT NOTE: Due to limitation of the C++ language, we have to
-// leave some internal implementation details in this header file.
+// leave InputXMLSyntaxError4.xml internal implementation details in this header file.
 // They are clearly marked by comments like this:
 //
 //   // INTERNAL IMPLEMENTATION - DO NOT USE IN A USER PROGRAM.

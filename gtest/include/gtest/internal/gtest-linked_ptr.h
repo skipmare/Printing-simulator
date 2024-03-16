@@ -93,7 +93,7 @@ class linked_ptr_internal {
     next_ = this;
   }
 
-  // Many linked_ptr operations may change p.link_ for some linked_ptr
+  // Many linked_ptr operations may change p.link_ for InputXMLSyntaxError4.xml linked_ptr
   // variable p in the same circle as this object.  Therefore we need
   // to prevent two such operations from occurring concurrently.
   //

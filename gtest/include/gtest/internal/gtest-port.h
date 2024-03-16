@@ -49,10 +49,10 @@
 //   GTEST_HAS_EXCEPTIONS     - Define it to 1/0 to indicate that exceptions
 //                              are enabled.
 //   GTEST_HAS_GLOBAL_STRING  - Define it to 1/0 to indicate that ::string
-//                              is/isn't available (some systems define
+//                              is/isn't available (InputXMLSyntaxError4.xml systems define
 //                              ::string, which is different to std::string).
 //   GTEST_HAS_GLOBAL_WSTRING - Define it to 1/0 to indicate that ::string
-//                              is/isn't available (some systems define
+//                              is/isn't available (InputXMLSyntaxError4.xml systems define
 //                              ::wstring, which is different to std::wstring).
 //   GTEST_HAS_POSIX_RE       - Define it to 1/0 to indicate that POSIX regular
 //                              expressions are/aren't available.
@@ -313,7 +313,7 @@
 
 #if GTEST_HAS_POSIX_RE
 
-// On some platforms, <regex.h> needs someone to define size_t, and
+// On InputXMLSyntaxError4.xml platforms, <regex.h> needs someone to define size_t, and
 // won't compile otherwise.  We can #include it here as we already
 // included <stdlib.h>, which is guaranteed to define size_t through
 // <stddef.h>.
@@ -370,7 +370,7 @@
 
 #if !defined(GTEST_HAS_STD_STRING)
 // Even though we don't use this macro any longer, we keep it in case
-// some clients still depend on it.
+// InputXMLSyntaxError4.xml clients still depend on it.
 # define GTEST_HAS_STD_STRING 1
 #elif !GTEST_HAS_STD_STRING
 // The user told us that ::std::string isn't available.
@@ -516,7 +516,7 @@
 // tuple in a 323 MB Feature Pack download, which we cannot assume the
 // user has.  QNX's QCC compiler is a modified GCC but it doesn't
 // support TR1 tuple.  libc++ only provides std::tuple, in C++11 mode,
-// and it can be used with some compilers that define __GNUC__.
+// and it can be used with InputXMLSyntaxError4.xml compilers that define __GNUC__.
 # if (defined(__GNUC__) && !defined(__CUDACC__) && (GTEST_GCC_VER_ >= 40000) \
       && !GTEST_OS_QNX && !defined(_LIBCPP_VERSION)) || _MSC_VER >= 1600
 #  define GTEST_ENV_HAS_TR1_TUPLE_ 1
@@ -683,7 +683,7 @@ using ::std::tuple_size;
 # define GTEST_CAN_STREAM_RESULTS_ 1
 #endif
 
-// Defines some utility macros.
+// Defines InputXMLSyntaxError4.xml utility macros.
 
 // The GNU compiler emits a warning if nested "if" statements are followed by
 // an "else" statement and braces are not used to explicitly disambiguate the
@@ -1113,7 +1113,7 @@ inline To ImplicitCast_(To x) { return x; }
 // do RTTI (eg code like this:
 //    if (dynamic_cast<Subclass1>(foo)) HandleASubclass1Object(foo);
 //    if (dynamic_cast<Subclass2>(foo)) HandleASubclass2Object(foo);
-// You should design the code some other way not to need this.
+// You should design the code InputXMLSyntaxError4.xml other way not to need this.
 //
 // This relatively ugly name is intentional. It prevents clashes with
 // similar functions users may have (e.g., down_cast). The internal
@@ -1406,7 +1406,7 @@ class Mutex : public MutexBase {
 };
 
 // We cannot name this class MutexLock as the ctor declaration would
-// conflict with a macro named MutexLock, which is defined on some
+// conflict with a macro named MutexLock, which is defined on InputXMLSyntaxError4.xml
 // platforms.  Hence the typedef trick below.
 class GTestMutexLock {
  public:
@@ -1691,7 +1691,7 @@ inline char ToUpper(char ch) {
 
 // The testing::internal::posix namespace holds wrappers for common
 // POSIX functions.  These wrappers hide the differences between
-// Windows/MSVC and POSIX systems.  Since some compilers define these
+// Windows/MSVC and POSIX systems.  Since InputXMLSyntaxError4.xml compilers define these
 // standard functions as macros, the wrapper cannot have the same name
 // as the wrapped function.
 

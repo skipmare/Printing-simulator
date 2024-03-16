@@ -26,6 +26,23 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
             TiXmlElement *name = elem->FirstChildElement("name");
             TiXmlElement *emission = elem->FirstChildElement("emission");
             TiXmlElement *speed = elem->FirstChildElement("speed");
+            if (name == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <name> ... </name>" << std::endl;
+                endresult = PartialImport;
+
+                continue;
+            }
+            if (emission == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <emission> ... </emission>" << std::endl;
+                endresult = PartialImport;
+                continue;
+            }
+            if (speed == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <speed> ... </speed>" << std::endl;
+                endresult = PartialImport;
+                continue;
+            }
+
             if (name && emission && speed) {
                 try{
                     newDevice.setName(name->GetText());
@@ -40,15 +57,27 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                     endresult = PartialImport;
 
                 }
-            } else {
-                errorStream << "Partial import: Device is missing information." << std::endl;
-                endresult = PartialImport;
             }
         } else if (elemName == "JOB") {
             Job newJob;
             TiXmlElement *jobNumber = elem->FirstChildElement("jobNumber");
             TiXmlElement *pageCount = elem->FirstChildElement("pageCount");
             TiXmlElement *userName = elem->FirstChildElement("userName");
+            if (jobNumber == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <jobNumber> ... </jobNumber>" << std::endl;
+                endresult = PartialImport;
+                continue;
+            }
+            if (pageCount == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <pageCount> ... </pageCount>" << std::endl;
+                endresult = PartialImport;
+                continue;
+            }
+            if (userName == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <userName> ... </userName>" << std::endl;
+                endresult = PartialImport;
+                continue;
+            }
             if (jobNumber && pageCount && userName) {
                 try {
                     newJob.setJobNumber(stoi(jobNumber->GetText()));
@@ -64,11 +93,6 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 }
             }
 
-            else {
-                errorStream << "Partial import: Job has invalid information." << std::endl;
-                endresult = PartialImport;
-            }
-
         } else {
             errorStream << "Unrecognizable element: " << elemName << std::endl;
             endresult = PartialImport;
@@ -77,7 +101,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
     }
 
-    if (!isConsistent){
+    if (!isConsistent || system.getDevices().empty()){
         errorStream << "XML IMPORT ABORTED: Inconsistent printing system." << std::endl;
         //system.clear(); Nog nodig om te implementeren
         return ImportAborted;
