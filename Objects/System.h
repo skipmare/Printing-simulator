@@ -17,10 +17,12 @@ using namespace std;
 
 class System {
 public:
+    System* _initCheck = this;
     queue<Job> jobs;
     vector<Device> devices;
     int Add_Job_Queue_index = 0;
 
+    bool properlyInitialized() const;
     void addJob(Job job);
 
     void print_jobs();

@@ -18,6 +18,9 @@ using namespace std;
 #include "jobs.h"
 #include "devices.h"
 
+    bool System::properlyInitialized() const {
+        return _initCheck == this;
+    }
 
     void System::addJob(Job job){
         jobs.push(job);
