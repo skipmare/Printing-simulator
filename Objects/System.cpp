@@ -65,8 +65,35 @@ using namespace std;
         }
     }
 
-    void System::output_info(){
-        ofstream file("output.txt");
+    void System::execute_job(){
+        for (Device& device : devices){
+
+            std::cout << "Printer " <<"\""<< device.getName() <<"\"" <<" finished job:" << std::endl;
+            std::cout <<"Number: " << device.getCurrentJob()->getJobNumber() << std::endl;
+            std::cout <<"Submitted by " << "\"" << device.getCurrentJob()->getUserName() << "\"" << std::endl;
+            std::cout << device.getCurrentJob()->getPageCount() << " pages" << std::endl;
+
+            if(!device.getJobs().empty()){
+            Job* job = new Job(device.getJobs().front());
+            device.getJobs().pop();
+            device.set_current_job(job);
+            }
+            else{
+                device.set_current_job(nullptr);
+            }
+        }
+
+    }
+    void System::execute_all_jobs(){
+        for (Device& device : devices){
+            while (device.getCurrentJob() != nullptr){
+                execute_job();
+            }
+        }
+    }
+
+    void System::output_info(std::string namefile){
+        ofstream file(namefile);
         for (Device& device : devices){
             file << device.getName() << " (CO2: " << device.getEmission() <<"g/page):" << std::endl;
             file <<"    * Current:" << std::endl;

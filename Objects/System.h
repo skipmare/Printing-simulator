@@ -27,11 +27,15 @@ public:
 
     void print_jobs();
 
+    void execute_job();
+
+    void execute_all_jobs();
+
     void addDevice(Device device);
 
     void assigning_jobs();
 
-    void output_info();
+    void output_info(std::string namefile);
 
     void clear_jobs();
 

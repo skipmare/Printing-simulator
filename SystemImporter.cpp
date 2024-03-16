@@ -86,7 +86,6 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
     doc.Clear();
     system.assigning_jobs();
-    system.output_info();
     return endresult;
 
 }
