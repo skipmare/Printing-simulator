@@ -2,10 +2,10 @@
 // Created by ADMIN on 15/03/2024.
 //
 
-#ifndef PSE_2023_2023_JOBS_H
-#define PSE_2023_2023_JOBS_H
-#include <iostream>
 
+#include <iostream>
+#ifndef JOBS_H
+#define JOBS_H
 
 class Job {
     Job* _initCheck = this;
@@ -32,5 +32,4 @@ public:
 
 };
 
-
-#endif //PSE_2023_2023_JOBS_H
+#endif // JOBS_H

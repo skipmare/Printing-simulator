@@ -1,6 +1,11 @@
 //
 // Created by abdir on 13/03/2024.
 //
+
+#include "System.h"
+//
+// Created by abdir on 13/03/2024.
+//
 #include "iostream"
 #include "queue"
 #include "stack"
@@ -9,22 +14,16 @@
 
 using namespace std;
 
-#ifndef PSE_2023_2023_SYSTEM_H
-#define PSE_2023_2023_SYSTEM_H
-#include "Objects/jobs.h"
-#include "Objects/devices.h"
+
+#include "jobs.h"
+#include "devices.h"
 
 
-class System {
-public:
-    queue<Job> jobs;
-    vector<Device> devices;
-    int Add_Job_Queue_index = 0;
-
-    void addJob(Job job){
+    void System::addJob(Job job){
         jobs.push(job);
     }
-    void print_jobs(){
+
+    void System::print_jobs(){
         while (!jobs.empty()){
             Job job = jobs.front();
             jobs.pop();
@@ -32,11 +31,11 @@ public:
         }
     }
 
-    void addDevice(Device device){
+    void System::addDevice(Device device){
         devices.push_back(device);
     }
 
-    void assigning_jobs(){
+    void System::assigning_jobs(){
         for (Device& device : devices){
             if(device.getCurrentJob() == nullptr){
                 if (!jobs.empty()){
@@ -63,7 +62,7 @@ public:
         }
     }
 
-    void output_info(){
+    void System::output_info(){
         ofstream file("output.txt");
         for (Device& device : devices){
             file << device.getName() << " (CO2: " << device.getEmission() <<"g/page):" << std::endl;
@@ -83,12 +82,18 @@ public:
         }
     }
 
+    void System::clear_jobs(){
+        while (!jobs.empty()){
+            jobs.pop();
+        }
+    }
 
 
+    void System::clear_devices(){
+        devices.clear();
+    }
 
-
-
-};
-
-
-#endif //PSE_2023_2023_SYSTEM_H
+    void System::clear(){
+        clear_jobs();
+        clear_devices();
+    }

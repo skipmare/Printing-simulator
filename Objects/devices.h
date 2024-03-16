@@ -1,12 +1,14 @@
 // devices.h
 
-#ifndef PSE_2023_2023_DEVICES_H
-#define PSE_2023_2023_DEVICES_H
+
 
 #include <iostream>
 #include <queue>
 #include <string>
-#include "jobs.h" // Assuming you have a Job.h header file for Job class
+#include "jobs.h"
+
+#ifndef DEVICES_H
+#define DEVICES_H
 
 class Device {
     Device* _initCheck;
@@ -32,4 +34,4 @@ public:
     void print();
 };
 
-#endif //PSE_2023_2023_DEVICES_H
+#endif

@@ -2,6 +2,7 @@
 
 #include "devices.h"
 #include <iostream>
+#include <gtest/gtest.h>
 
 Device::Device() : _initCheck(this), currentJob(nullptr) {}
 

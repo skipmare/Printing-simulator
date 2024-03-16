@@ -1,6 +1,7 @@
 #include "SystemImporter.h"
 #include "DesignByContract.h"
 #include "tinyxml/tinyxml.h"
+using namespace std;
 
 
 SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &errorStream, System& system) {
@@ -28,8 +29,8 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
             if (name && emission && speed) {
                 try{
                     newDevice.setName(name->GetText());
-                    newDevice.setEmission(stoi(emission->GetText()));
-                    newDevice.setSpeed(stoi(speed->GetText()));
+                    newDevice.setEmission(std::stoi(emission->GetText()));
+                    newDevice.setSpeed(std::stoi(speed->GetText()));
                     if(newDevice.getEmission() < 0 || newDevice.getSpeed() < 0){
                         isConsistent = false;
                     }
@@ -84,7 +85,8 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
 
     doc.Clear();
-
+    system.assigning_jobs();
+    system.output_info();
     return endresult;
 
 }

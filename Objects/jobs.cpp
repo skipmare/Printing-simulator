@@ -3,8 +3,8 @@
 //
 
 #include "jobs.h"
-#ifndef JOBS_H
-#define JOBS_H
+
+
     bool Job::properlyInitialized() const {
         return _initCheck == this;
     }
@@ -37,5 +37,3 @@
         std::cout << "Page count: " << pageCount << '\n';
         std::cout << "User name: " << userName << '\n';
     }
-
-#endif // JOBS_H
