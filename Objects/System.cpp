@@ -98,3 +98,7 @@ using namespace std;
         clear_jobs();
         clear_devices();
     }
+
+    vector<Device> System::getDevices() {
+        return devices;
+    }

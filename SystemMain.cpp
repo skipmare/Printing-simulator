@@ -9,7 +9,6 @@ int main() {
     System system;
     SystemImporter::importSystem("test.xml", cerr, system);
 
-    system.output_info();
 
 }
 

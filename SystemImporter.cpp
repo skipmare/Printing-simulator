@@ -29,6 +29,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
             if (name == NULL){
                 errorStream << "PARTIAL IMPORT: Expected <name> ... </name>" << std::endl;
                 endresult = PartialImport;
+
                 continue;
             }
             if (emission == NULL){
@@ -100,7 +101,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
     }
 
-    if (!isConsistent){
+    if (!isConsistent || system.getDevices().empty()){
         errorStream << "XML IMPORT ABORTED: Inconsistent printing system." << std::endl;
         //system.clear(); Nog nodig om te implementeren
         return ImportAborted;

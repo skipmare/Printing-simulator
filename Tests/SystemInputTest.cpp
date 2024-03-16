@@ -136,30 +136,61 @@ TEST_F(SystemInputTest, InputXMLSyntaxErrors) {
 
 
 
-/*
+
 TEST_F(SystemInputTest, InputLegalSystem) {
     ASSERT_TRUE(DirectoryExists("../TestInput"));
 
-    ofstream myfile;
     SuccessEnum importResult;
     int fileCounter = 1;
-    string fileName = "testInput/legalsystem" + to_string(fileCounter) + ".xml";
+    string filename = "../TestInput/InputLegalSystem" + to_string(fileCounter) + ".xml";
+    string OutputFileName = "../TestInput/InputLegalSystemERR.txt";
+    std::ofstream errStream;
 
-    while (FileExists (fileName)) {
-        myfile.open("testInput/zzzError.txt");
-        importResult = SystemImporter::importSystem(fileName.c_str(), myfile, system_);
-        myfile.close();
-        EXPECT_TRUE(importResult == Success);
-        EXPECT_TRUE(FileIsEmpty("testInput/zzzError.txt"));
+    while (FileExists(filename)) {
+        errStream.open(OutputFileName);
+        importResult = SystemImporter::importSystem(filename.c_str(), errStream, system_);
+        errStream.close();
 
-        fileCounter = fileCounter + 1;
-        fileName = "testInput/legalsystem" + to_string(fileCounter) + ".xml";
+        EXPECT_EQ(Success, importResult);
+        EXPECT_TRUE(FileIsEmpty(OutputFileName));
+
+
+        fileCounter++;
+        filename = "../TestInput/InputLegalSystem" + to_string(fileCounter) + ".xml";
 
         system_.clear();
         EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
     }
-
-    EXPECT_EQ(1, fileCounter);
+    EXPECT_EQ(4, fileCounter);
 
 }
-*/
+
+
+
+TEST_F(SystemInputTest, InputIllegalSystem) {
+    ASSERT_TRUE(DirectoryExists("../TestInput"));
+
+    SuccessEnum importResult;
+    int fileCounter = 1;
+    string filename = "../TestInput/InputIllegalSystem" + to_string(fileCounter) + ".xml";
+    string OutputFileName = "../TestInput/InputIllegalSystemERR" + to_string(fileCounter) + ".txt";
+    std::ofstream errStream;
+
+    while (FileExists(filename)) {
+        errStream.open(OutputFileName);
+        importResult = SystemImporter::importSystem(filename.c_str(), errStream, system_);
+        errStream.close();
+
+        EXPECT_EQ(PartialImport, importResult);
+
+
+        fileCounter++;
+        filename = "../TestInput/InputIllegalSystem" + to_string(fileCounter) + ".xml";
+        OutputFileName = "../TestInput/InputXMLSyntaxError" + to_string(fileCounter) + ".txt";
+
+        system_.clear();
+        EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
+    }
+    EXPECT_EQ(8, fileCounter);
+
+}
