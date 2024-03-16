@@ -88,8 +88,9 @@ TEST_F(SystemInputTest, InputInconsistency) {
         importResult = SystemImporter::importSystem(filename.c_str(), errStream, system_);
         errStream.close();
 
-        EXPECT_TRUE(FileIsEmpty("../TestInput/InconsistentInputERR.txt"));
+        EXPECT_TRUE(FileCompare("../TestInput/InconsistentERR.txt", OutputFileName));
         EXPECT_EQ(ImportAborted, importResult);
+
 
         fileCounter++;
         filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
