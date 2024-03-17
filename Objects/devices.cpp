@@ -3,6 +3,7 @@
 #include "devices.h"
 #include <iostream>
 #include <gtest/gtest.h>
+#include "../DesignByContract.h"
 
 Device::Device() : _initCheck(this), currentJob(nullptr) {}
 
@@ -15,10 +16,12 @@ std::queue<Job>& Device::getJobs() {
 }
 
 Job* Device::getCurrentJob() {
+
     return currentJob;
 }
 
 void Device::set_current_job(Job* job) {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getJobs");
     currentJob = job;
 }
 

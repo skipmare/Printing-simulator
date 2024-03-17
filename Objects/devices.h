@@ -19,7 +19,7 @@ class Device {
     std::queue<Job> jobs;
 
 public:
-    Device(); // You might want to define a constructor
+    Device();
     bool properlyInitialized() const;
 
     std::queue<Job>& getJobs();

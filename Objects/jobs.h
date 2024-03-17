@@ -47,9 +47,7 @@ public:
      * REQUIRE(properlyInitialized(), "Job wasn't initialized when calling setUserName");
      */
     void setUserName(const std::string &xuserName);
-    /*
-     * REQUIRE(properlyInitialized(), "Job wasn't initialized when calling print");
-     */
+
     void print();
 
 };
