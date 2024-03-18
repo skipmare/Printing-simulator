@@ -21,6 +21,16 @@ bool System::properlyInitialized() const {
     return _initCheck == this;
 }
 
+System::~System() {
+    for (Device* device : devices) {
+        delete device;
+    }
+    while (jobs.size() > 0) {
+        delete jobs.front();
+        jobs.pop();
+    }
+}
+
 void System::addJob(Job* job){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling addJob");
     unsigned int old = jobs.size();

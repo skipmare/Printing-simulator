@@ -22,6 +22,9 @@ public:
     vector<Device*> devices;
     int Add_Job_Queue_index = 0;
 
+
+    ~System();
+
     bool properlyInitialized() const;
 
     /**
