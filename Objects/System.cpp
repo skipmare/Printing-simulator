@@ -9,6 +9,7 @@
 #include "stack"
 #include "vector"
 #include "fstream"
+#include "../DesignByContract.h"
 
 using namespace std;
 
@@ -16,115 +17,140 @@ using namespace std;
 #include "jobs.h"
 #include "devices.h"
 
-    bool System::properlyInitialized() const {
-        return _initCheck == this;
-    }
+bool System::properlyInitialized() const {
+    return _initCheck == this;
+}
 
-    void System::addJob(Job job){
-        jobs.push(job);
-    }
+void System::addJob(Job* job){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling addJob");
+    unsigned int old = jobs.size();
+    jobs.push(job);
+    ENSURE(jobs.size() == old+1, "addJob postcondition failed");
+}
 
-    void System::print_jobs(){
-        while (!jobs.empty()){
-            Job job = jobs.front();
-            jobs.pop();
-            job.print();
-        }
-    }
 
-    void System::addDevice(Device device){
-        devices.push_back(device);
-    }
+void System::addDevice(Device* device){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling addDevice");
+    unsigned int old = devices.size();
+    devices.push_back(device);
+    ENSURE(devices.size() == old+1, "addDevice postcondition failed");
+}
 
-    void System::assigning_jobs(){
-        for (Device& device : devices){
-            if(device.getCurrentJob() == nullptr){
-                if (!jobs.empty()){
-                    Job* job = new Job(jobs.front());
-                    jobs.pop();
-                    device.set_current_job(job);
-                }
-            }
-        }
+queue<Job*> System::getJobs(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling getJobs");
+    return jobs;
+}
 
-        int last_index = devices.size() - 1;
 
-        while(!jobs.empty()){
+vector<Device*> System::getDevices() {
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling getDevices");
+    return devices;
+}
 
-            Job* job = new Job(jobs.front());
-            jobs.pop();
-            devices[Add_Job_Queue_index].getJobs().push(*job);
-            Add_Job_Queue_index++;
-
-            if (Add_Job_Queue_index > last_index){
-                Add_Job_Queue_index = 0;
+void System::assigning_jobs(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling assigning_jobs");
+    for (Device* device : devices){
+        if(device->getCurrentJob() == nullptr){
+            if (!jobs.empty()){
+                Job* job = jobs.front();
+                jobs.pop();
+                device->set_current_job(job);
             }
         }
     }
 
-    void System::execute_job(){
-        for (Device& device : devices){
+    int last_index = devices.size() - 1;
 
-            std::cout << "Printer " <<"\""<< device.getName() <<"\"" <<" finished job:" << std::endl;
-            std::cout <<"Number: " << device.getCurrentJob()->getJobNumber() << std::endl;
-            std::cout <<"Submitted by " << "\"" << device.getCurrentJob()->getUserName() << "\"" << std::endl;
-            std::cout << device.getCurrentJob()->getPageCount() << " pages" << std::endl;
+    while(!jobs.empty()){
 
-            if(!device.getJobs().empty()){
-            Job* job = new Job(device.getJobs().front());
-            device.getJobs().pop();
-            device.set_current_job(job);
-            }
-            else{
-                device.set_current_job(nullptr);
-            }
-        }
+        Job* job = jobs.front();
+        jobs.pop();
+        devices[Add_Job_Queue_index]->getJobs().push(job);
+        Add_Job_Queue_index++;
 
-    }
-    void System::execute_all_jobs(){
-        for (Device& device : devices){
-            while (device.getCurrentJob() != nullptr){
-                execute_job();
-            }
+        if (Add_Job_Queue_index > last_index){
+            Add_Job_Queue_index = 0;
         }
     }
+}
 
-    void System::output_info(std::string namefile){
-        ofstream file(namefile);
-        for (Device& device : devices){
-            file << device.getName() << " (CO2: " << device.getEmission() <<"g/page):" << std::endl;
-            file <<"    * Current:" << std::endl;
-            // Check if getCurrentJob() returns a nullptr before dereferencing it.
-            if(device.getCurrentJob() != nullptr){
-                file <<"        [#"<< device.getCurrentJob()->getJobNumber() <<"|" << device.getCurrentJob()->getUserName() <<"]" << std::endl;
-            }
-            file  <<"    * Queue:" << std::endl;
+void System::execute_all_jobs(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling execute_all_jobs");
+    for (Device* device : devices){
+        while (device->getCurrentJob() != nullptr){
+            execute_job();
+        }
+    }
+}
 
-            queue<Job> temp = device.getJobs();
-            while (!temp.empty()){
-                Job& job = temp.front();
-                temp.pop();
-                file <<"        [#"<< job.getJobNumber() <<"|" << job.getUserName() <<"]" << std::endl;
-            }
+void System::execute_job(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling execute_job");
+    for (Device* device : devices){
+
+        std::cout << "Printer " <<"\""<< device->getName() <<"\"" <<" finished job:" << std::endl;
+        std::cout <<"Number: " << device->getCurrentJob()->getJobNumber() << std::endl;
+        std::cout <<"Submitted by " << "\"" << device->getCurrentJob()->getUserName() << "\"" << std::endl;
+        std::cout << device->getCurrentJob()->getPageCount() << " pages" << std::endl;
+
+        if(!device->getJobs().empty()){
+            Job* job = device->getJobs().front();
+            device->getJobs().pop();
+            device->set_current_job(job);
+        }
+        else{
+            device->set_current_job(nullptr);
         }
     }
 
-    void System::clear_jobs(){
-        while (!jobs.empty()){
-            jobs.pop();
+}
+
+
+
+void System::output_info(std::string namefile){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling output_info");
+    ofstream file(namefile);
+    for (Device* device : devices){
+        file << device->getName() << " (CO2: " << device->getEmission() <<"g/page):" << std::endl;
+        file <<"    * Current:" << std::endl;
+
+        if(device->getCurrentJob() != nullptr){
+            file <<"        [#"<< device->getCurrentJob()->getJobNumber() <<"|" << device->getCurrentJob()->getUserName() <<"]" << std::endl;
+        }
+        file  <<"    * Queue:" << std::endl;
+
+        std::queue<Job*> temp = device->getJobs();
+        while (!temp.empty()){
+            Job* job = temp.front();
+            temp.pop();
+            file <<"        [#"<< job->getJobNumber() <<"|" << job->getUserName() <<"]" << std::endl;
         }
     }
+}
 
-
-    void System::clear_devices(){
-        devices.clear();
+void System::clear_jobs(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear_jobs");
+    while (!jobs.empty()){
+        jobs.pop();
     }
+    ENSURE(jobs.empty(), "clear_jobs postcondition failed");
+}
 
-    void System::clear(){
-        clear_jobs();
-        clear_devices();
-    }
 
-    vector<Device> System::getDevices() {
-        return devices;
-    }
+void System::clear_devices(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear_devices");
+    devices.clear();
+    ENSURE(devices.empty(), "clear_jobs postcondition failed");
+}
+
+void System::clear(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear");
+    clear_jobs();
+    clear_devices();
+    ENSURE(jobs.empty() && devices.empty(), "clear postcondition failed");
+}
+
+
+
+
+
+
