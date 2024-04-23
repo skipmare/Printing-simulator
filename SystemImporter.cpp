@@ -30,6 +30,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
             TiXmlElement *name = elem->FirstChildElement("name");
             TiXmlElement *emission = elem->FirstChildElement("emission");
             TiXmlElement *speed = elem->FirstChildElement("speed");
+            TiXmlElement *type = elem->FirstChildElement("type");
             if (name == NULL){
                 errorStream << "PARTIAL IMPORT: Expected <name> ... </name>" << std::endl;
                 endresult = PartialImport;
@@ -45,9 +46,13 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 errorStream << "PARTIAL IMPORT: Expected <speed> ... </speed>" << std::endl;
                 endresult = PartialImport;
                 continue;
+            }if (type == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <type> ... </type> (Device)" << std::endl;
+                endresult = PartialImport;
+                continue;
             }
 
-            if (name && emission && speed) {
+            if (name && emission && speed && type) {
                 try{
                     newDevice->setName(name->GetText());
                     newDevice->setEmission(std::stoi(emission->GetText()));
@@ -67,6 +72,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
             TiXmlElement *jobNumber = elem->FirstChildElement("jobNumber");
             TiXmlElement *pageCount = elem->FirstChildElement("pageCount");
             TiXmlElement *userName = elem->FirstChildElement("userName");
+            TiXmlElement *type = elem->FirstChildElement("type");
             if (jobNumber == NULL){
                 errorStream << "PARTIAL IMPORT: Expected <jobNumber> ... </jobNumber>" << std::endl;
                 endresult = PartialImport;
@@ -81,8 +87,12 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 errorStream << "PARTIAL IMPORT: Expected <userName> ... </userName>" << std::endl;
                 endresult = PartialImport;
                 continue;
+            }if (type == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <type> ... </type> (Job)" << std::endl;
+                endresult = PartialImport;
+                continue;
             }
-            if (jobNumber && pageCount && userName) {
+            if (jobNumber && pageCount && userName && type) {
                 try {
                     newJob->setJobNumber(stoi(jobNumber->GetText()));
                     newJob->setPageCount(stoi(pageCount->GetText()));
