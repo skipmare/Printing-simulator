@@ -8,6 +8,10 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
     bool isConsistent = true;
     SuccessEnum endresult = Success;
     TiXmlDocument doc;
+
+
+    REQUIRE(system.properlyInitialized(), "system wasn't initialized when passed to SystemImporter::importGame");
+
     if (!doc.LoadFile(filename)) {
         errorStream <<"XML IMPORT ABORTED: " << doc.ErrorDesc() << std::endl;
         return ImportAborted;
@@ -22,10 +26,11 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
     for (TiXmlElement* elem = root->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement()) {
         std::string elemName = elem->Value();
         if (elemName == "DEVICE") {
-            Device newDevice;
+            Device* newDevice = new Device();
             TiXmlElement *name = elem->FirstChildElement("name");
             TiXmlElement *emission = elem->FirstChildElement("emission");
             TiXmlElement *speed = elem->FirstChildElement("speed");
+            TiXmlElement *type = elem->FirstChildElement("type");
             if (name == NULL){
                 errorStream << "PARTIAL IMPORT: Expected <name> ... </name>" << std::endl;
                 endresult = PartialImport;
@@ -41,14 +46,18 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 errorStream << "PARTIAL IMPORT: Expected <speed> ... </speed>" << std::endl;
                 endresult = PartialImport;
                 continue;
+            }if (type == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <type> ... </type> (Device)" << std::endl;
+                endresult = PartialImport;
+                continue;
             }
 
-            if (name && emission && speed) {
+            if (name && emission && speed && type) {
                 try{
-                    newDevice.setName(name->GetText());
-                    newDevice.setEmission(std::stoi(emission->GetText()));
-                    newDevice.setSpeed(std::stoi(speed->GetText()));
-                    if(newDevice.getEmission() < 0 || newDevice.getSpeed() < 0){
+                    newDevice->setName(name->GetText());
+                    newDevice->setEmission(std::stoi(emission->GetText()));
+                    newDevice->setSpeed(std::stoi(speed->GetText()));
+                    if(newDevice->getEmission() < 0 || newDevice->getSpeed() < 0){
                         isConsistent = false;
                     }
                     system.addDevice(newDevice);
@@ -59,10 +68,11 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 }
             }
         } else if (elemName == "JOB") {
-            Job newJob;
+            Job* newJob = new Job();
             TiXmlElement *jobNumber = elem->FirstChildElement("jobNumber");
             TiXmlElement *pageCount = elem->FirstChildElement("pageCount");
             TiXmlElement *userName = elem->FirstChildElement("userName");
+            TiXmlElement *type = elem->FirstChildElement("type");
             if (jobNumber == NULL){
                 errorStream << "PARTIAL IMPORT: Expected <jobNumber> ... </jobNumber>" << std::endl;
                 endresult = PartialImport;
@@ -77,13 +87,17 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 errorStream << "PARTIAL IMPORT: Expected <userName> ... </userName>" << std::endl;
                 endresult = PartialImport;
                 continue;
+            }if (type == NULL){
+                errorStream << "PARTIAL IMPORT: Expected <type> ... </type> (Job)" << std::endl;
+                endresult = PartialImport;
+                continue;
             }
-            if (jobNumber && pageCount && userName) {
+            if (jobNumber && pageCount && userName && type) {
                 try {
-                    newJob.setJobNumber(stoi(jobNumber->GetText()));
-                    newJob.setPageCount(stoi(pageCount->GetText()));
-                    newJob.setUserName(userName->GetText());
-                    if(newJob.getPageCount() < 0 || newJob.getJobNumber() < 0){
+                    newJob->setJobNumber(stoi(jobNumber->GetText()));
+                    newJob->setPageCount(stoi(pageCount->GetText()));
+                    newJob->setUserName(userName->GetText());
+                    if(newJob->getPageCount() < 0 || newJob->getJobNumber() < 0){
                         isConsistent = false;
                     }
                     system.addJob(newJob);
@@ -103,10 +117,8 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
     if (!isConsistent || system.getDevices().empty()){
         errorStream << "XML IMPORT ABORTED: Inconsistent printing system." << std::endl;
-        //system.clear(); Nog nodig om te implementeren
         return ImportAborted;
     }
-
 
     doc.Clear();
     system.assigning_jobs();

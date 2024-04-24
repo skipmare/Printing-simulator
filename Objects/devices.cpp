@@ -11,45 +11,53 @@ bool Device::properlyInitialized() const {
     return _initCheck == this;
 }
 
-std::queue<Job>& Device::getJobs() {
+std::queue<Job*>& Device::getJobs() {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getJobs");
     return jobs;
 }
 
 Job* Device::getCurrentJob() {
-
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getCurrentJob");
     return currentJob;
 }
 
 void Device::set_current_job(Job* job) {
-    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getJobs");
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling set_current_job");
     currentJob = job;
 }
 
 const std::string &Device::getName() const {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getName");
     return name;
 }
 
 int Device::getEmission() const {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getEmission");
     return emission;
 }
 
 int Device::getSpeed() const {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getSpeed");
     return speed;
 }
 
 void Device::setName(const std::string &xname) {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling setName");
     name = xname;
 }
 
 void Device::setEmission(int xemission) {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling setEmission");
     emission = xemission;
 }
 
 void Device::setSpeed(int xspeed) {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling setSpeed");
     speed = xspeed;
 }
 
 void Device::print() {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling print");
     std::cout << "Name: " << name << '\n';
     std::cout << "Emission: " << emission << '\n';
     std::cout << "Speed: " << speed << '\n';

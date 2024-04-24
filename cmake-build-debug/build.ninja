@@ -119,6 +119,13 @@ build CMakeFiles/release_target.dir/Objects/jobs.cpp.obj: CXX_COMPILER__release_
   OBJECT_DIR = CMakeFiles\release_target.dir
   OBJECT_FILE_DIR = CMakeFiles\release_target.dir\Objects
 
+build CMakeFiles/release_target.dir/Objects/log.cpp.obj: CXX_COMPILER__release_target_unscanned_Debug C$:/Users/abdir/CLionProjects/PSE_2023-2023/Objects/log.cpp || cmake_object_order_depends_target_release_target
+  DEP_FILE = CMakeFiles\release_target.dir\Objects\log.cpp.obj.d
+  FLAGS = -std=c++17 -Wall -Werror -O2 -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/abdir/CLionProjects/PSE_2023-2023/./gtest/include
+  OBJECT_DIR = CMakeFiles\release_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\release_target.dir\Objects
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target release_target
@@ -127,7 +134,7 @@ build CMakeFiles/release_target.dir/Objects/jobs.cpp.obj: CXX_COMPILER__release_
 #############################################
 # Link the executable release_target.exe
 
-build release_target.exe: CXX_EXECUTABLE_LINKER__release_target_Debug CMakeFiles/release_target.dir/SystemMain.cpp.obj CMakeFiles/release_target.dir/tinyxml/tinystr.cpp.obj CMakeFiles/release_target.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/release_target.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/release_target.dir/tinyxml/tinyxmlparser.cpp.obj CMakeFiles/release_target.dir/SystemImporter.cpp.obj CMakeFiles/release_target.dir/Objects/System.cpp.obj CMakeFiles/release_target.dir/Utils.cpp.obj CMakeFiles/release_target.dir/Objects/devices.cpp.obj CMakeFiles/release_target.dir/Objects/jobs.cpp.obj
+build release_target.exe: CXX_EXECUTABLE_LINKER__release_target_Debug CMakeFiles/release_target.dir/SystemMain.cpp.obj CMakeFiles/release_target.dir/tinyxml/tinystr.cpp.obj CMakeFiles/release_target.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/release_target.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/release_target.dir/tinyxml/tinyxmlparser.cpp.obj CMakeFiles/release_target.dir/SystemImporter.cpp.obj CMakeFiles/release_target.dir/Objects/System.cpp.obj CMakeFiles/release_target.dir/Utils.cpp.obj CMakeFiles/release_target.dir/Objects/devices.cpp.obj CMakeFiles/release_target.dir/Objects/jobs.cpp.obj CMakeFiles/release_target.dir/Objects/log.cpp.obj
   FLAGS = -std=c++17 -Wall -Werror -O2 -g
   LINK_FLAGS = -pthread
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -232,6 +239,13 @@ build CMakeFiles/debug_target.dir/Tests/SystemOutputTest.cpp.obj: CXX_COMPILER__
   OBJECT_DIR = CMakeFiles\debug_target.dir
   OBJECT_FILE_DIR = CMakeFiles\debug_target.dir\Tests
 
+build CMakeFiles/debug_target.dir/Objects/log.cpp.obj: CXX_COMPILER__debug_target_unscanned_Debug C$:/Users/abdir/CLionProjects/PSE_2023-2023/Objects/log.cpp || cmake_object_order_depends_target_debug_target
+  DEP_FILE = CMakeFiles\debug_target.dir\Objects\log.cpp.obj.d
+  FLAGS = -std=c++17 -Wall -Werror -O2 -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/abdir/CLionProjects/PSE_2023-2023/./gtest/include
+  OBJECT_DIR = CMakeFiles\debug_target.dir
+  OBJECT_FILE_DIR = CMakeFiles\debug_target.dir\Objects
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target debug_target
@@ -240,7 +254,7 @@ build CMakeFiles/debug_target.dir/Tests/SystemOutputTest.cpp.obj: CXX_COMPILER__
 #############################################
 # Link the executable debug_target.exe
 
-build debug_target.exe: CXX_EXECUTABLE_LINKER__debug_target_Debug CMakeFiles/debug_target.dir/Tests/SystemInputTest.cpp.obj CMakeFiles/debug_target.dir/Tests/SystemTests.cpp.obj CMakeFiles/debug_target.dir/Objects/System.cpp.obj CMakeFiles/debug_target.dir/Utils.cpp.obj CMakeFiles/debug_target.dir/SystemImporter.cpp.obj CMakeFiles/debug_target.dir/tinyxml/tinystr.cpp.obj CMakeFiles/debug_target.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/debug_target.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/debug_target.dir/tinyxml/tinyxmlparser.cpp.obj CMakeFiles/debug_target.dir/Objects/devices.cpp.obj CMakeFiles/debug_target.dir/Objects/jobs.cpp.obj CMakeFiles/debug_target.dir/Tests/SystemOutputTest.cpp.obj
+build debug_target.exe: CXX_EXECUTABLE_LINKER__debug_target_Debug CMakeFiles/debug_target.dir/Tests/SystemInputTest.cpp.obj CMakeFiles/debug_target.dir/Tests/SystemTests.cpp.obj CMakeFiles/debug_target.dir/Objects/System.cpp.obj CMakeFiles/debug_target.dir/Utils.cpp.obj CMakeFiles/debug_target.dir/SystemImporter.cpp.obj CMakeFiles/debug_target.dir/tinyxml/tinystr.cpp.obj CMakeFiles/debug_target.dir/tinyxml/tinyxml.cpp.obj CMakeFiles/debug_target.dir/tinyxml/tinyxmlerror.cpp.obj CMakeFiles/debug_target.dir/tinyxml/tinyxmlparser.cpp.obj CMakeFiles/debug_target.dir/Objects/devices.cpp.obj CMakeFiles/debug_target.dir/Objects/jobs.cpp.obj CMakeFiles/debug_target.dir/Tests/SystemOutputTest.cpp.obj CMakeFiles/debug_target.dir/Objects/log.cpp.obj
   FLAGS = -std=c++17 -Wall -Werror -O2 -g
   LINK_FLAGS = -pthread
   LINK_LIBRARIES = -lgtest  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
