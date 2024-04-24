@@ -1,27 +1,21 @@
 <?xml version="1.0" ?>
 <SYSTEM>
     <DEVICE>
-        # Missing name
+        <name>Office_Scanner5</name>
         <emission>3</emission>
-        <type>bw</type>
-        <speed>40</speed>
-    </DEVICE>
-    <DEVICE>
-        <name>Office_Printer5</name>
-        <emission>3</emission>
-        <type>color</type>
+        #missing type
         <speed>40</speed>
     </DEVICE>
     <JOB>
         <jobNumber>89751</jobNumber>
         <pageCount>2</pageCount>
-        <type>bw</type>
+        <type>scan</type>
         <userName>SergeDemeyer</userName>
     </JOB>
     <JOB>
         <jobNumber>2189</jobNumber>
         <pageCount>3</pageCount>
-        <type>color</type>
+        <type>scan</type>
         <userName>anonymous_user</userName>
     </JOB>
 </SYSTEM>

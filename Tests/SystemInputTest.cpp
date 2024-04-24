@@ -102,7 +102,7 @@ TEST_F(SystemInputTest, InputInconsistency) {
         system_.clear();
         EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
     }
-    EXPECT_EQ(6, fileCounter);
+    EXPECT_EQ(7, fileCounter);
 }
 
 
@@ -139,7 +139,7 @@ TEST_F(SystemInputTest, InputXMLSyntaxErrors) {
 
 
 
-/*
+
 TEST_F(SystemInputTest, InputLegalSystem) {
     ASSERT_TRUE(DirectoryExists("../TestInput"));
 
@@ -194,7 +194,6 @@ TEST_F(SystemInputTest, InputIllegalSystem) {
         system_.clear();
         EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
     }
-    EXPECT_EQ(8, fileCounter);
+    EXPECT_EQ(10, fileCounter);
 
 }
-*/

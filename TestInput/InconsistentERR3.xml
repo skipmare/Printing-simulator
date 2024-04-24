@@ -7,7 +7,7 @@
         <speed>40</speed>
     </DEVICE>
     <JOB>
-        <jobNumber>-89751</jobNumber>
+        <jobNumber>-89751</jobNumber> # jobNumber is negative
         <pageCount>2</pageCount>
         <type>bw</type>
         <userName>SergeDemeyer</userName>

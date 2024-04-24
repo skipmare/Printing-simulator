@@ -8,7 +8,7 @@
     </DEVICE>
     <JOB>
         <jobNumber>89751</jobNumber>
-        <pageCount>-2</pageCount>
+        <pageCount>-2</pageCount> # pageCount is negative
         <type>bw</type>
         <userName>SergeDemeyer</userName>
     </JOB>

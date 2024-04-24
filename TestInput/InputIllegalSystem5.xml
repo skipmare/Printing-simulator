@@ -1,18 +1,21 @@
 <?xml version="1.0" ?>
 <SYSTEM>
     <DEVICE>
-        <name>Office_Printer5</name>
+        <name>Office_Scanner5</name>
         <emission>3</emission>
+        <type>scan</type>
         <speed>40</speed>
     </DEVICE>
     <JOB>
         <jobNumber>89751</jobNumber>
-        #missing pageCount
+        # missing pageCount
+        <type>scan</type>
         <userName>SergeDemeyer</userName>
     </JOB>
     <JOB>
         <jobNumber>2189</jobNumber>
         <pageCount>3</pageCount>
+        <type>scan</type>
         <userName>anonymous_user</userName>
     </JOB>
 </SYSTEM>

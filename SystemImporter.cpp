@@ -1,13 +1,16 @@
 #include "SystemImporter.h"
 #include "DesignByContract.h"
 #include "tinyxml/tinyxml.h"
+#include "set"
 using namespace std;
+
 
 
 SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &errorStream, System& system) {
     bool isConsistent = true;
     SuccessEnum endresult = Success;
     TiXmlDocument doc;
+    set<int> jobNumbers;
 
 
     REQUIRE(system.properlyInitialized(), "system wasn't initialized when passed to SystemImporter::importGame");
@@ -124,10 +127,15 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
             if (jobNumber && pageCount && userName && type) {
                 try {
-                    newJob->setJobNumber(stoi(jobNumber->GetText()));
+                    int jobNumberInt = stoi(jobNumber->GetText());
+                    newJob->setJobNumber(jobNumberInt);
                     newJob->setPageCount(stoi(pageCount->GetText()));
                     newJob->setUserName(userName->GetText());
                     if(newJob->getPageCount() < 0 || newJob->getJobNumber() < 0){
+                        isConsistent = false;
+                    }
+                    jobNumbers.insert(jobNumberInt);
+                    if (jobNumbers.count(jobNumberInt) > 1){
                         isConsistent = false;
                     }
                     system.addJob(newJob);
@@ -145,7 +153,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
 
     }
 
-    if (!isConsistent || system.getDevices().empty()){
+    if (!isConsistent){
         errorStream << "XML IMPORT ABORTED: Inconsistent printing system." << std::endl;
         return ImportAborted;
     }

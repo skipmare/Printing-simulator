@@ -4,7 +4,7 @@
         <name>Office_Printer5</name>
         <emission>3</emission>
         <type>bw</type>
-        <speed>-40</speed>
+        <speed>-40</speed> # speed is negative
     </DEVICE>
     <JOB>
         <jobNumber>89751</jobNumber>

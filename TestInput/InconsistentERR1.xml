@@ -2,7 +2,7 @@
 <SYSTEM>
     <DEVICE>
         <name>Office_Printer5</name>
-        <emission>-3</emission>
+        <emission>-3</emission> # emission is negative
         <type>bw</type>
         <speed>40</speed>
     </DEVICE>

@@ -11,7 +11,7 @@ using namespace std;
 #include "../SystemImporter.h"
 #include "../Utils.h"
 
-/*
+
 class OutputTest : public ::testing::Test {
 protected:
     friend class System;
@@ -36,23 +36,26 @@ TEST_F(OutputTest, OutputHappyDay) {
 
     myfile.open("../TestOutput/happyday.xml");
     myfile << "<?xml version=\"1.0\" ?>\n"
-           <<"<SYSTEM>\n"
-           << "\t<DEVICE>\n"
-           << "\t\t<name>Office_Printer5</name>\n"
-           << "\t\t<emission>5</emission>\n"
-           << "\t\t<speed>5</speed>\n"
-           << "\t</DEVICE>\n"
-           << "\t<JOB>\n"
-           << "\t\t<jobNumber>89751</jobNumber>\n"
-           << "\t\t<pageCount>2</pageCount>\n"
-           << "\t\t<userName>SergeDemeyer</userName>\n"
-           << "\t</JOB>\n"
-           << "\t<JOB>\n"
-           << "\t\t<jobNumber>2189</jobNumber>\n"
-           << "\t\t<pageCount>3</pageCount>\n"
-           << "\t\t<userName>anonymous_user</userName>\n"
-           << "\t</JOB>\n"
-           << "</SYSTEM>";
+            <<"<SYSTEM>\n"
+            << "\t<DEVICE>\n"
+            << "\t\t<name>Office_Printer5</name>\n"
+            << "\t\t<emission>5</emission>\n"
+            << "\t\t<type>bw</type>\n"
+            << "\t\t<speed>5</speed>\n"
+            << "\t</DEVICE>\n"
+            << "\t<JOB>\n"
+            << "\t\t<jobNumber>89751</jobNumber>\n"
+            << "\t\t<pageCount>2</pageCount>\n"
+            << "\t\t<type>bw</type>\n"
+            << "\t\t<userName>SergeDemeyer</userName>\n"
+            << "\t</JOB>\n"
+            << "\t<JOB>\n"
+            << "\t\t<jobNumber>2189</jobNumber>\n"
+            << "\t\t<pageCount>3</pageCount>\n"
+            << "\t\t<type>bw</type>\n"
+            << "\t\t<userName>anonymous_user</userName>\n"
+            << "\t</JOB>\n"
+            << "</SYSTEM>";
     myfile.close();
     std::ofstream errStream;
 
@@ -66,7 +69,6 @@ TEST_F(OutputTest, OutputHappyDay) {
     system_.clear();
     EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
 
-
 }
 
 TEST_F(OutputTest, correctOutput) {
@@ -79,4 +81,3 @@ TEST_F(OutputTest, correctOutput) {
 
     EXPECT_TRUE(FileCompare("../TestOutput/happyDayOut.txt", "../TestOutput/happyDayExpectedOut.txt"));
 }
-*/
