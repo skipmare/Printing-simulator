@@ -1,0 +1,15 @@
+//
+// Created by ADMIN on 23/04/2024.
+//
+
+#include "scheduler.h"
+
+scheduler::scheduler(std::vector<Device *> &devices, std::queue<Job *> &jobs) {
+    _initCheck = this;
+    this->devices = devices;
+    this->jobs = jobs;
+}
+
+bool scheduler::properlyInitialized() const {
+    return _initCheck == this;
+}
