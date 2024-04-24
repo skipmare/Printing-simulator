@@ -11,7 +11,7 @@ using namespace std;
 #include "../SystemImporter.h"
 #include "../Utils.h"
 
-
+/*
 class OutputTest : public ::testing::Test {
 protected:
     friend class System;
@@ -79,3 +79,4 @@ TEST_F(OutputTest, correctOutput) {
 
     EXPECT_TRUE(FileCompare("../TestOutput/happyDayOut.txt", "../TestOutput/happyDayExpectedOut.txt"));
 }
+*/

@@ -26,11 +26,14 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
     for (TiXmlElement* elem = root->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement()) {
         std::string elemName = elem->Value();
         if (elemName == "DEVICE") {
-            Device* newDevice = new Device();
+
             TiXmlElement *name = elem->FirstChildElement("name");
             TiXmlElement *emission = elem->FirstChildElement("emission");
             TiXmlElement *speed = elem->FirstChildElement("speed");
             TiXmlElement *type = elem->FirstChildElement("type");
+
+
+
             if (name == NULL){
                 errorStream << "PARTIAL IMPORT: Expected <name> ... </name>" << std::endl;
                 endresult = PartialImport;
@@ -50,6 +53,23 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 errorStream << "PARTIAL IMPORT: Expected <type> ... </type> (Device)" << std::endl;
                 endresult = PartialImport;
                 continue;
+            }
+
+            Device* newDevice = new Device();
+            string typeString = type->GetText();
+
+            if (typeString == "bw"){
+
+            } else if (typeString == "color"){
+
+            } else if(typeString == "scan"){
+
+            }
+            else {
+                errorStream << "PARTIAL IMPORT: Expected types are bw, color and scan" << std::endl;
+                endresult = PartialImport;
+                continue;
+
             }
 
             if (name && emission && speed && type) {
@@ -92,6 +112,16 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 endresult = PartialImport;
                 continue;
             }
+            string typeString = type->GetText();
+
+            if (typeString != "bw" && typeString != "color" && typeString != "scan"){
+                errorStream << "PARTIAL IMPORT: Expected types are bw, color and scan" << std::endl;
+                endresult = PartialImport;
+                continue;
+            }
+
+
+
             if (jobNumber && pageCount && userName && type) {
                 try {
                     newJob->setJobNumber(stoi(jobNumber->GetText()));
@@ -125,3 +155,4 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
     return endresult;
 
 }
+
