@@ -2,8 +2,6 @@
 // Created by ADMIN on 23/04/2024.
 //
 #include "devices.h"
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-private-field"
 #ifndef PSE_2023_2023_PRINTER_H
 #define PSE_2023_2023_PRINTER_H
 
@@ -21,5 +19,3 @@ public:
 
 
 #endif //PSE_2023_2023_PRINTER_H
-
-#pragma clang diagnostic pop

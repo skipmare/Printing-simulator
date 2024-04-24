@@ -33,10 +33,6 @@ public:
      */
     void addJob(Job* job);
 
-    /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling addDevice");
-     */
-    queue<Job*> getJobs();
 
     /**
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling getJobs");
@@ -44,11 +40,6 @@ public:
      */
     void addDevice(Device* device);
 
-    /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling addDevice");
-     * ENSURE(devices.size() == old+1, "addDevice postcondition failed");
-     */
-    vector<Device*> getDevices();
 
     /**
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling getDevices");

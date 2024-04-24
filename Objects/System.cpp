@@ -46,16 +46,7 @@ void System::addDevice(Device* device){
     ENSURE(devices.size() == old+1, "addDevice postcondition failed");
 }
 
-queue<Job*> System::getJobs(){
-    REQUIRE(properlyInitialized(), "System wasn't initialized when calling getJobs");
-    return jobs;
-}
 
-
-vector<Device*> System::getDevices() {
-    REQUIRE(properlyInitialized(), "System wasn't initialized when calling getDevices");
-    return devices;
-}
 
 void System::assigning_jobs(){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling assigning_jobs");

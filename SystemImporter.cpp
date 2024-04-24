@@ -2,6 +2,9 @@
 #include "DesignByContract.h"
 #include "tinyxml/tinyxml.h"
 #include "set"
+#include "./Objects/BWPrinter.h"
+#include "./Objects/ColorPrinter.h"
+#include "./Objects/Scanner.h"
 using namespace std;
 
 
@@ -58,15 +61,16 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                 continue;
             }
 
-            Device* newDevice = new Device();
+            Device *newDevice = nullptr;
+
             string typeString = type->GetText();
 
             if (typeString == "bw"){
-
+               newDevice = new BWPrinter();
             } else if (typeString == "color"){
-
+                newDevice = new ColorPrinter();
             } else if(typeString == "scan"){
-
+                newDevice = new Scanner();
             }
             else {
                 errorStream << "PARTIAL IMPORT: Expected types are bw, color and scan" << std::endl;

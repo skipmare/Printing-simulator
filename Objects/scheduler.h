@@ -14,10 +14,13 @@ class scheduler {
 
     std::queue<Job*> jobs;
     std::vector<Device*> devices;
+    int Add_Job_Queue_index = 0;
 
 public:
     scheduler(std::vector<Device*> & devices, std::queue<Job*> & jobs);
     bool properlyInitialized() const;
+
+    void schedule();
 };
 
 

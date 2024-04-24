@@ -14,6 +14,7 @@ class Job {
     Job* _initCheck = this;
     int jobNumber;
     int pageCount;
+    std::string type;
     std::string userName;
 
 public:
