@@ -5,15 +5,23 @@
 #ifndef PSE_2023_2023_LOG_H
 #define PSE_2023_2023_LOG_H
 #include "iostream"
-
+#include "./System.h"
 #include <iostream>
 #include <fstream>
 
-class Logger {
-public:
-    void logToConsole(const std::string& message);
+using namespace std;
 
-    void logToFile(const std::string& filename, const std::string& message);
+class Log {
+private:
+    Log* _initCheck;
+    System* _system;
+public:
+    Log(System* system);
+    void logStatusInfo( bool toFile);
+
+    void logJobInfo(bool toFile);
+
+    bool properlyInitialized() const;
 };
 
 

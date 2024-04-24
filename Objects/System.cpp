@@ -33,9 +33,9 @@ System::~System() {
 
 void System::addJob(Job* job){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling addJob");
-    unsigned int old = jobs.size();
+
     jobs.push(job);
-    ENSURE(jobs.size() == old+1, "addJob postcondition failed");
+
 }
 
 

@@ -4,13 +4,7 @@
 
 #include "log.h"
 
-void Logger::logToConsole(const std::string& message) {
-    std::cout << message << std::endl;
-}
+Log::Log(System* system) : _system(system){}
 
-void Logger::logToFile(const std::string& filename, const std::string& message) {
-    std::ofstream file(filename);
-    file << message << std::endl;
-    file.close();
-}
+// Nog functies toevoegen...
 
