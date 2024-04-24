@@ -96,9 +96,8 @@ TEST_F(SystemInputTest, InputInconsistency) {
 
 
         fileCounter++;
-        filename = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".xml";
         OutputFileName = "../TestInput/InConsistentERR" + to_string(fileCounter) + ".txt";
-
+        filename = "../TestInput/InconsistentERR" + to_string(fileCounter) + ".xml";
         system_.clear();
         EXPECT_TRUE(system_.devices.empty() && system_.jobs.empty());
     }
