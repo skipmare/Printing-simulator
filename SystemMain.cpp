@@ -5,7 +5,6 @@ using namespace std;
 
 
 
-
 int main() {
     System system;
     SystemImporter::importSystem("test.xml", cerr, system);
