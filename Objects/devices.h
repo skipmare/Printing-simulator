@@ -12,13 +12,15 @@
 
 class Device {
     Device* _initCheck;
+protected:
     Job* currentJob;
     std::queue<Job*> jobs;
-protected:
+
     std::string name;
     int emission;
     int speed;
     std::string type;
+    int workload = 0;
 public:
     Device();
 
@@ -71,6 +73,21 @@ public:
      * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling print");
      */
     void print();
+    /*
+     * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling give_job");
+     */
+    void give_job(Job* job);
+
+    /*
+     * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getWorkload");
+     */
+    int getWorkload() const;
+
+
+    /*
+     *REQUIRE(properlyInitialized(), "Device wasn't initialized when calling finishJob");
+     */
+    void finishJob();
 
 
 };

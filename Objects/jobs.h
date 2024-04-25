@@ -49,7 +49,20 @@ public:
      */
     void setUserName(const std::string &xuserName);
 
+    /*
+     * REQUIRE(properlyInitialized(), "Job wasn't initialized when calling print");
+     */
     void print();
+
+    /*
+     * REQUIRE(properlyInitialized(), "Job wasn't initialized when calling setType");
+     */
+    void setType(const std::string &xType);
+
+    /*
+     * REQUIRE(properlyInitialized(), "Job wasn't initialized when calling getType");
+     */
+    const std::string &getType() const;
 
 };
 

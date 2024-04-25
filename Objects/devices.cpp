@@ -70,3 +70,32 @@ void Device::print() {
     std::cout << "Emission: " << emission << '\n';
     std::cout << "Speed: " << speed << '\n';
 }
+
+void Device::give_job(Job* job) {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling addJob");
+    if (currentJob == nullptr) {
+        currentJob = job;
+    } else {
+        jobs.push(job);
+    }
+    workload = job->getPageCount();
+}
+
+int Device::getWorkload() const {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getWorkload");
+    return workload;
+}
+
+
+void Device::finishJob() {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling finishJob");
+    if (currentJob != nullptr) {
+        int workload_current_job = currentJob->getPageCount();
+        workload -= workload_current_job;
+        currentJob = nullptr;
+        if (!jobs.empty()) {
+            currentJob = jobs.front();
+            jobs.pop();
+        }
+    }
+}

@@ -43,9 +43,19 @@ void Job::setUserName(const std::string &xuserName) {
     this->userName = xuserName;
 }
 
-void Job::print(){
+void Job::print() {
     REQUIRE(properlyInitialized(), "Job wasn't initialized when calling print");
     std::cout << "Job number: " << jobNumber << '\n';
     std::cout << "Page count: " << pageCount << '\n';
     std::cout << "User name: " << userName << '\n';
+}
+
+void Job::setType(const std::string &xType) {
+    REQUIRE(properlyInitialized(), "Job wasn't initialized when calling setType");
+    this->type = xType;
+}
+
+const std::string &Job::getType() const {
+    REQUIRE(properlyInitialized(), "Job wasn't initialized when calling getType");
+    return type;
 }

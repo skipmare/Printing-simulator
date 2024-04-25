@@ -136,6 +136,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                     newJob->setJobNumber(jobNumberInt);
                     newJob->setPageCount(stoi(pageCount->GetText()));
                     newJob->setUserName(userName->GetText());
+                    newJob->setType(type->GetText());
                     if(newJob->getPageCount() < 0 || newJob->getJobNumber() < 0){
                         isConsistent = false;
                     }

@@ -5,6 +5,10 @@
 #include <queue>
 #include <vector>
 #include "jobs.h"
+#include "./BWPrinter.h"
+#include "./ColorPrinter.h"
+#include "./Scanner.h"
+#include <set>
 #ifndef PSE_2023_2023_SCHEDULER_H
 #define PSE_2023_2023_SCHEDULER_H
 
@@ -14,13 +18,25 @@ class scheduler {
 
     std::queue<Job*> jobs;
     std::vector<Device*> devices;
-    int Add_Job_Queue_index = 0;
+
+    std::vector<Device*> Scanners;
+    std::vector<Device*> Printers;
+    std::vector<Device*> ColorPrinters;
 
 public:
     scheduler(std::vector<Device*> & devices, std::queue<Job*> & jobs);
     bool properlyInitialized() const;
 
     void schedule();
+
+    Device* getLeastWorkloadScanner();
+
+    Device* getLeastWorkloadBWPrinter();
+
+    Device* getLeastWorkloadColorPrinter();
+
+
+
 };
 
 
