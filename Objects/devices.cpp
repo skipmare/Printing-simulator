@@ -20,6 +20,14 @@ Job* Device::getCurrentJob() {
     REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getCurrentJob");
     return currentJob;
 }
+void Device::setType(const std::string xtype) {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling setType");
+    this->type = xtype;
+}
+std::string Device::getType() {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getType");
+    return type;
+}
 
 void Device::set_current_job(Job* job) {
     REQUIRE(properlyInitialized(), "Device wasn't initialized when calling set_current_job");

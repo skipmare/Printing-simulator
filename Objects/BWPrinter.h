@@ -10,8 +10,8 @@
 
 class BWPrinter : public Device {
     BWPrinter* _initCheck;
-    int emission_cap = 8;
-    std::string type = "bw";
+    int emission_cap;
+    std::string type;
 
 public:
     bool properlyInitialized() const;

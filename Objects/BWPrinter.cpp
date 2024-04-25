@@ -6,6 +6,8 @@
 
 BWPrinter::BWPrinter() {
     _initCheck = this;
+    this->emission_cap = 8;
+    this->type = "bw";
 }
 
 bool BWPrinter::properlyInitialized() const {

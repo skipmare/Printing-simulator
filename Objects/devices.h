@@ -12,12 +12,13 @@
 
 class Device {
     Device* _initCheck;
+    Job* currentJob;
+    std::queue<Job*> jobs;
+protected:
     std::string name;
     int emission;
     int speed;
-    Job* currentJob;
-    std::queue<Job*> jobs;
-
+    std::string type;
 public:
     Device();
 
@@ -26,6 +27,14 @@ public:
      * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getJobs");
      */
     std::queue<Job*>& getJobs();
+    /*
+     * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling setType");
+     */
+    void setType(const std::string xtype);
+    /*
+     * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getType");
+     */
+    std::string getType();
     /*
      * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getCurrentJob");
      */
