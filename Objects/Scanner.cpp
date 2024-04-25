@@ -10,4 +10,6 @@ bool Scanner::properlyInitialized() const {
 
 Scanner::Scanner() {
     _initCheck = this;
+    this->emission_cap = 12;
+    this->type = "scan=";
 }

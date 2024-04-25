@@ -8,8 +8,8 @@
 
 class Scanner : public Device{
     Scanner* _initCheck;
-    int emission_cap = 12;
-    std::string type = "bw";
+    int emission_cap;
+    std::string type;
 
 public:
     bool properlyInitialized() const;

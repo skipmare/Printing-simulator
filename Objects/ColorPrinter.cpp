@@ -9,4 +9,6 @@ bool ColorPrinter::properlyInitialized() const {
 }
 ColorPrinter::ColorPrinter() {
     _initCheck = this;
+    this->emission_cap = 23;
+    this->type = "color";
 }

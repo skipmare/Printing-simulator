@@ -84,6 +84,7 @@ SuccessEnum SystemImporter::importSystem(const char *filename, std::ostream &err
                     newDevice->setName(name->GetText());
                     newDevice->setEmission(std::stoi(emission->GetText()));
                     newDevice->setSpeed(std::stoi(speed->GetText()));
+                    newDevice->setType(type->GetText());
                     if(newDevice->getEmission() < 0 || newDevice->getSpeed() < 0){
                         isConsistent = false;
                     }
