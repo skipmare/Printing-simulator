@@ -30,7 +30,8 @@ set(RELEASE_SOURCE_FILES SystemMain.cpp
         Objects/BWPrinter.cpp
         Objects/ColorPrinter.cpp
         Objects/Scanner.cpp
-        Objects/scheduler.cpp)
+        Objects/scheduler.cpp
+        Objects/log.cpp)
 
 # Set source files for DEBUG target
 # Only add cpp files, no h files!
@@ -43,7 +44,8 @@ set(DEBUG_SOURCE_FILES ./Tests/SystemInputTest.cpp ./Tests/SystemTests.cpp Objec
         Objects/BWPrinter.cpp
         Objects/ColorPrinter.cpp
         Objects/Scanner.cpp
-        Objects/scheduler.cpp)
+        Objects/scheduler.cpp
+        Objects/log.cpp)
 
 # Create RELEASE target
 add_executable(release_target ${RELEASE_SOURCE_FILES})

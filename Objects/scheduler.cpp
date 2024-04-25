@@ -17,28 +17,5 @@ bool scheduler::properlyInitialized() const {
 
 void scheduler::schedule() {
     REQUIRE(properlyInitialized(), "scheduler wasn't initialized when calling schedule");
-    for (Device* device : devices){
-        if(device->getCurrentJob() == nullptr){
-            if (!jobs.empty()){
-                Job* job = jobs.front();
-                jobs.pop();
-                device->set_current_job(job);
-            }
-        }
-    }
-
-    int last_index = devices.size() - 1;
-
-    while(!jobs.empty()){
-
-        Job* job = jobs.front();
-        jobs.pop();
-        devices[Add_Job_Queue_index]->getJobs().push(job);
-        Add_Job_Queue_index++;
-
-        if (Add_Job_Queue_index > last_index){
-            Add_Job_Queue_index = 0;
-        }
-    }
 
 }

@@ -8,3 +8,5 @@ Log::Log(System* system) : _system(system){}
 
 // Nog functies toevoegen...
 
+
+
