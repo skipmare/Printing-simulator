@@ -20,6 +20,9 @@ public:
     System* _initCheck = this;
     queue<Job*> jobs;
     vector<Device*> devices;
+
+    int exejob_CO2;
+
     int Add_Job_Queue_index = 0;
 
 
@@ -58,13 +61,32 @@ public:
     /**
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling execute_job");
      */
+    void exe_job_logic();
+    /**
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling exe_job_logic");
+     */
+    void Do_job_minutes(int minutes);
+    /**
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling Do_job_minutes");
+     */
     void output_info(std::string namefile);
-
-
     /**
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling output_info");
      * ENSURE(jobs.empty(), "output_info postcondition failed");
      */
+
+    std::string get_statusinfo();
+    /**
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling get_statusinfo");
+     */
+
+    void Calculate_exejob_CO2();
+    /**
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling Calculate_exejob_CO2");
+     */
+     int getExejob_CO2();
+
+
     void clear_jobs();
     /*
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear_jobs");
@@ -76,6 +98,8 @@ public:
      * ENSURE(jobs.empty() && devices.empty(), "clear postcondition failed");
      */
     void clear();
+
+
 };
 
 

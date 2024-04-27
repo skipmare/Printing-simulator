@@ -24,7 +24,7 @@ class scheduler {
     std::vector<Device*> ColorPrinters;
 
 public:
-    scheduler(std::vector<Device*> & devices, std::queue<Job*> & jobs);
+    scheduler(std::vector<Device*> & devices, std::queue<Job*> jobs);
     bool properlyInitialized() const;
 
     void schedule();

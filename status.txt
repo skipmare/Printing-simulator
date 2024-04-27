@@ -1,0 +1,30 @@
+# === [System Status] === #
+
+--== Devices ==--
+
+* Office_Printer5:
+* CO2: 3g/page
+* 1 pages / minute
+* Black-and-white printer
+
+* ColorPrinter:
+* CO2: 6g/page
+* 3 pages / minute
+* Color printer
+
+--== Jobs ==--
+
+[Job #89751]
+* Owner: SergeDemeyer
+* Device: ColorPrinter
+* Status: 2 pages done
+* Total Pages: 2
+* Total CO2: 12g CO2
+
+[Job #2189]
+* Owner: anonymous_user
+* Device: Office_Printer5
+* Status: 3 pages done
+* Total Pages: 3
+* Total CO2: 9g CO2
+

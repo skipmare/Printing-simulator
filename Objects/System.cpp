@@ -63,6 +63,33 @@ void System::execute_all_jobs(){
         }
     }
 }
+void System::exe_job_logic(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling exe_job_logic");
+    assigning_jobs();
+    execute_all_jobs();
+}
+
+void System::Calculate_exejob_CO2(){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling Calculate_exejob_CO2");
+    int total = 0;
+    for (Device* device : devices){
+        for (Job* job : device->getDoneJobs()){
+            total += job->getTotalCO2();
+        }
+    }
+    exejob_CO2 = total;
+}
+
+void System::Do_job_minutes(int minutes){
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling Do_job_minutes");
+    for (int i = 0; i < minutes; i++){
+        for(Device* device : devices){
+        device->DoJob_Min();
+        }
+    }
+    this->Calculate_exejob_CO2();
+
+}
 
 void System::execute_job(){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling execute_job");
@@ -82,10 +109,7 @@ void System::execute_job(){
             device->set_current_job(nullptr);
         }
     }
-
 }
-
-
 
 void System::output_info(std::string namefile){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling output_info");
@@ -129,6 +153,11 @@ void System::clear(){
     clear_devices();
     ENSURE(jobs.empty() && devices.empty(), "clear postcondition failed");
 }
+
+int System::getExejob_CO2() {
+    return exejob_CO2;
+}
+
 
 
 

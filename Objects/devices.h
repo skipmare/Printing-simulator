@@ -15,12 +15,14 @@ class Device {
 protected:
     Job* currentJob;
     std::queue<Job*> jobs;
+    std::vector<Job*> done_jobs;
 
     std::string name;
     int emission;
     int speed;
     std::string type;
     int workload = 0;
+    int currentjob_workload = 0;
 public:
     Device();
 
@@ -85,10 +87,16 @@ public:
 
 
     /*
-     *REQUIRE(properlyInitialized(), "Device wasn't initialized when calling finishJob");
+     *REQUIRE(properlyInitialized(), "Device wasn't initialized when calling DoJob_Min");
      */
-    void finishJob();
+    void DoJob_Min();
 
+    /*
+     *REQUIRE(properlyInitialized(), "Device wasn't initialized when calling status_jobsqueue");
+     */
+    void status_jobsqueue();
+
+    std::vector<Job*> getDoneJobs();
 
 };
 

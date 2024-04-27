@@ -75,10 +75,13 @@ void Device::give_job(Job* job) {
     REQUIRE(properlyInitialized(), "Device wasn't initialized when calling addJob");
     if (currentJob == nullptr) {
         currentJob = job;
+        currentjob_workload = job->getPageCount();
+        currentJob->setTotalCO2(this->emission);
+        currentJob->setDevice(this->name);
     } else {
         jobs.push(job);
     }
-    workload = job->getPageCount();
+    workload += job->getPageCount();
 }
 
 int Device::getWorkload() const {
@@ -87,15 +90,45 @@ int Device::getWorkload() const {
 }
 
 
-void Device::finishJob() {
+void Device::DoJob_Min() {
     REQUIRE(properlyInitialized(), "Device wasn't initialized when calling finishJob");
     if (currentJob != nullptr) {
-        int workload_current_job = currentJob->getPageCount();
-        workload -= workload_current_job;
-        currentJob = nullptr;
-        if (!jobs.empty()) {
-            currentJob = jobs.front();
-            jobs.pop();
+        currentjob_workload -= speed;
+        currentJob->setStatus(1,currentJob->getPageCount() - currentjob_workload);
+        if (currentjob_workload <= 0) {
+            done_jobs.push_back(currentJob);
+            if (!jobs.empty()) {
+                currentJob= jobs.front();
+                jobs.pop();
+                currentjob_workload += currentJob->getPageCount();
+                currentJob->setStatus(1,currentJob->getPageCount() - currentjob_workload);
+            }else{
+                currentJob = nullptr;
+                currentjob_workload = 0;
+            }
         }
+        this->status_jobsqueue();
     }
+}
+
+void Device::status_jobsqueue(){
+/* to set like WAITING #1, WAITING #2, WAITING #3, WAITING #4, WAITING #5, WAITING #6, WAITING #7, WAITING #8, WAITING #9, WAITING #10
+ */
+    int pos = 1;
+    std::queue<Job*> temp;
+    while (!jobs.empty()) {
+        Job* job = jobs.front();
+        jobs.pop();
+        job->setStatus(0,pos);
+        job->setTotalCO2(this->emission);
+        job->setDevice(this->name);
+        temp.push(job);
+        pos++;
+    }
+    jobs = temp;
+}
+
+std::vector<Job*> Device::getDoneJobs() {
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getDoneJobs");
+    return done_jobs;
 }

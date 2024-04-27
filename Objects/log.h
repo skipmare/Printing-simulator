@@ -5,11 +5,13 @@
 #ifndef PSE_2023_2023_LOG_H
 #define PSE_2023_2023_LOG_H
 #include "iostream"
-#include "./System.h"
 #include <iostream>
 #include <fstream>
+#include "System.h"
+
 
 using namespace std;
+
 
 class Log {
 private:
@@ -20,6 +22,8 @@ public:
     void logStatusInfo( bool toFile);
 
     void logJobInfo(bool toFile);
+
+    void logerror(bool toFile);
 
     bool properlyInitialized() const;
 };

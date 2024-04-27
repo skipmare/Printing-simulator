@@ -14,6 +14,10 @@ class Job {
     Job* _initCheck = this;
     int jobNumber;
     int pageCount;
+
+    std::string Device;
+    int TotalCO2;
+    std::string Status;
     std::string type;
     std::string userName;
 
@@ -64,6 +68,23 @@ public:
      */
     const std::string &getType() const;
 
+    /*
+     * REQUIRE(properlyInitialized(), "Job wasn't initialized when calling setStatus");
+     */
+    void setStatus(int currentjobornot, int number);
+
+    /*
+     * REQUIRE(properlyInitialized(), "Job wasn't initialized when calling setTotalCO2");
+     */
+    void setTotalCO2(int xTotalCO2);
+
+    void setDevice(const std::string Device);
+
+    std::string getDevice();
+
+    int getTotalCO2();
+
+    std::string getStatus();
 };
 
 #endif // JOBS_H

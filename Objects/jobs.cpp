@@ -59,3 +59,42 @@ const std::string &Job::getType() const {
     REQUIRE(properlyInitialized(), "Job wasn't initialized when calling getType");
     return type;
 }
+
+void Job::setStatus(int currentjobornot, int number) {
+    REQUIRE(properlyInitialized(), "Job wasn't initialized when calling setStatus");
+    if(currentjobornot == 0){
+        this->Status ="WAITING #" + std::to_string(number);
+    }
+    else if(currentjobornot == 1) {
+        if (this->pageCount <= number) {
+            this->Status = std::to_string(this->pageCount) + " pages done";
+        } else {
+            this->Status = std::to_string(number) + " pages done";
+        }
+    }
+}
+
+void Job::setTotalCO2(int Emission) {
+    REQUIRE(properlyInitialized(), "Job wasn't initialized when calling setTotalCO2");
+    this->TotalCO2 = Emission * this->pageCount;
+}
+
+void Job::setDevice(const std::string devicename){
+    REQUIRE(properlyInitialized(), "Job wasn't initialized when calling setDevice");
+    this->Device = devicename;
+}
+
+std::string Job::getStatus() {
+    REQUIRE(properlyInitialized(), "Job wasn't initialized when calling getStatus");
+    return Status;
+}
+
+int Job::getTotalCO2() {
+    REQUIRE(properlyInitialized(), "Job wasn't initialized when calling getTotalCO2");
+    return TotalCO2;
+}
+
+std::string Job::getDevice() {
+    REQUIRE(properlyInitialized(), "Job wasn't initialized when calling getDevice");
+    return Device;
+}

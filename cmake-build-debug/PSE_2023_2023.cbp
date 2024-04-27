@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PSE_2023_2023"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="F:/desktop/PSE_2023-2023/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="release_target">
+				<Option output="F:/desktop/PSE_2023-2023/cmake-build-debug/release_target.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="F:/desktop/PSE_2023-2023/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="F:/desktop/PSE_2023-2023/./gtest/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 release_target"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="release_target/fast">
+				<Option output="F:/desktop/PSE_2023-2023/cmake-build-debug/release_target.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="F:/desktop/PSE_2023-2023/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="F:/desktop/PSE_2023-2023/./gtest/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 release_target/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="debug_target">
+				<Option output="F:/desktop/PSE_2023-2023/cmake-build-debug/debug_target.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="F:/desktop/PSE_2023-2023/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="F:/desktop/PSE_2023-2023/./gtest/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 debug_target"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="debug_target/fast">
+				<Option output="F:/desktop/PSE_2023-2023/cmake-build-debug/debug_target.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="F:/desktop/PSE_2023-2023/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="F:/desktop/PSE_2023-2023/./gtest/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 debug_target/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="F:/desktop/PSE_2023-2023/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="F:/desktop/PSE_2023-2023/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;F:/desktop/PSE_2023-2023/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/BWPrinter.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/BWPrinter.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/ColorPrinter.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/ColorPrinter.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/Scanner.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/Scanner.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/System.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/System.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/devices.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/devices.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/jobs.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/jobs.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/log.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/log.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/scheduler.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Objects/scheduler.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/SystemImporter.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/SystemImporter.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/SystemMain.cpp">
+			<Option target="release_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Tests/SystemInputTest.cpp">
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Tests/SystemOutputTest.cpp">
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Tests/SystemTests.cpp">
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Utils.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/Utils.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/tinyxml/tinystr.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/tinyxml/tinystr.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/tinyxml/tinyxml.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/tinyxml/tinyxml.h">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/tinyxml/tinyxmlerror.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/tinyxml/tinyxmlparser.cpp">
+			<Option target="release_target"/>
+			<Option target="debug_target"/>
+		</Unit>
+		<Unit filename="F:/desktop/PSE_2023-2023/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
