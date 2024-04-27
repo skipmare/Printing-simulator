@@ -73,9 +73,10 @@ void Log::logJobInfo(bool toFile) {
             JobInfos += "Submitted by \"" + job->getUserName() + "\"\n";
             JobInfos += std::to_string(job->getPageCount()) + " pages \n";
             JobInfos += "\n";
-            JobInfos += "CO2-counter: " + std::to_string(_system->getExejob_CO2()) + "g CO2\n";
 
         }
+        JobInfos += "CO2-counter: " + std::to_string(_system->getExejob_CO2()) + "g CO2\n";
+
     }
     if (toFile) {
         std::ofstream file;
