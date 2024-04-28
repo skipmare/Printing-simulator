@@ -33,8 +33,14 @@ public:
     scheduler(std::vector<Device*> & devices, std::queue<Job*> & jobs, std::string & errorStream);
     bool properlyInitialized() const;
 
+    /*
+     * REQUIRE(properlyInitialized(), "Scheduler wasn't initialized when calling schedule");
+     */
     void schedule();
 
+    /*
+     * REQUIRE(properlyInitialized(), "Scheduler wasn't initialized when calling LeastWorkloadDevice");
+     */
     Device* LeastWorkloadDevice(const std::vector<Device *>& devices_to_use,  int cap);
 
 

@@ -11,10 +11,6 @@ bool Device::properlyInitialized() const {
     return _initCheck == this;
 }
 
-std::queue<Job*>& Device::getJobs() {
-    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getJobs");
-    return jobs;
-}
 
 Job* Device::getCurrentJob() {
     REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getCurrentJob");
@@ -114,8 +110,9 @@ void Device::DoJob_Min() {
 void Device::status_jobsqueue(){
 /* to set like WAITING #1, WAITING #2, WAITING #3, WAITING #4, WAITING #5, WAITING #6, WAITING #7, WAITING #8, WAITING #9, WAITING #10
  */
+    REQUIRE(properlyInitialized(), "Device wasn't initialized when calling status_jobsqueue");
     int pos = 1;
-    std::queue<Job*> temp;
+    std::queue<Job*> temp = this->jobs;
     while (!jobs.empty()) {
         Job* job = jobs.front();
         jobs.pop();
@@ -125,7 +122,6 @@ void Device::status_jobsqueue(){
         temp.push(job);
         pos++;
     }
-    jobs = temp;
 }
 
 std::vector<Job*> Device::getDoneJobs() {

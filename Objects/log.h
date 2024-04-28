@@ -19,10 +19,20 @@ private:
     System* _system;
 public:
     Log(System* system);
+
+    /*
+     * REQUIRE(properlyInitialized(), "Log wasn't initialized when calling logStatusInfo");
+     */
     void logStatusInfo( bool toFile);
 
+    /*
+     * REQUIRE(properlyInitialized(), "Log wasn't initialized when calling logJobInfo");
+     */
     void logJobInfo(bool toFile);
 
+    /*
+     * REQUIRE(properlyInitialized(), "Log wasn't initialized when calling logerror");
+     */
     void logerror();
 
     bool properlyInitialized() const;

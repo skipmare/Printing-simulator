@@ -28,10 +28,6 @@ public:
 
     bool properlyInitialized() const;
     /*
-     * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getJobs");
-     */
-    std::queue<Job*>& getJobs();
-    /*
      * REQUIRE(properlyInitialized(), "Device wasn't initialized when calling setType");
      */
     void setType(const std::string xtype);
@@ -93,9 +89,13 @@ public:
 
     /*
      *REQUIRE(properlyInitialized(), "Device wasn't initialized when calling status_jobsqueue");
+     *
      */
     void status_jobsqueue();
 
+    /*
+     *REQUIRE(properlyInitialized(), "Device wasn't initialized when calling getDoneJobs");
+     */
     std::vector<Job*> getDoneJobs();
 
 };

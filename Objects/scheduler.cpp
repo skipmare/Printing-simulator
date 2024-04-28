@@ -6,10 +6,8 @@
 #include "../DesignByContract.h"
 
 scheduler::scheduler(std::vector<Device *> &devices, std::queue<Job *> &jobs, std::string & errorStream)
-        : errorStream(errorStream){
-_initCheck = this;
-    this->devices = devices;
-    this->jobs = jobs;
+        : _initCheck(this), jobs(jobs), devices(devices), errorStream(errorStream) {
+    _initCheck = this;
 
 
     for (Device* device : devices) {
@@ -21,6 +19,7 @@ _initCheck = this;
             this->ColorPrinters.push_back(device);
         }
     }
+
 }
 
 bool scheduler::properlyInitialized() const {

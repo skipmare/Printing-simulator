@@ -3,6 +3,7 @@
 //
 
 #include "log.h"
+#include "../DesignByContract.h"
 
 
 Log::Log(System* system) : _system(system){}
@@ -14,6 +15,7 @@ bool Log::properlyInitialized() const {
 }
 
 void Log::logStatusInfo(bool toFile) {
+    REQUIRE(properlyInitialized(), "Log wasn't initialized when calling logStatusInfo");
     std::string status;
     status = "# === [System Status] === #\n";
     status += "\n";
@@ -58,6 +60,7 @@ void Log::logStatusInfo(bool toFile) {
 }
 
 void Log::logJobInfo(bool toFile) {
+    REQUIRE(properlyInitialized(), "Log wasn't initialized when calling logJobInfo");
     std::string JobInfos;
     for (Device *device: _system->devices) {
         for(Job* job : device->getDoneJobs()){
@@ -90,6 +93,7 @@ void Log::logJobInfo(bool toFile) {
 }
 
 void Log::logerror() {
+    REQUIRE(properlyInitialized(), "Log wasn't initialized when calling logerror");
     std::cout << _system->getErrorString();
 }
 

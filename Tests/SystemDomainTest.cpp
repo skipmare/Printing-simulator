@@ -60,7 +60,7 @@ TEST_F(SystemDomainTest, HappydayScheduler) {
 
     system_.assigning_jobs();
 
-
+    system_.clear();
     EXPECT_TRUE(device1->getCurrentJob() == job1);
     EXPECT_EQ(device1->getWorkload(), 10);
 
@@ -75,6 +75,7 @@ TEST_F(SystemDomainTest, SystemEmission) {
     job1->setUserName("Peter Selie");
     job1->setType("scan");
 
+    system_.clear();
     system_.addJob(job1);
 
     device1->setType("scan");
@@ -88,6 +89,7 @@ TEST_F(SystemDomainTest, SystemEmission) {
 
     system_.Do_job_minutes(10);
 
+    system_.clear();
     EXPECT_EQ(system_.getExejob_CO2(), 80);
 }
 
@@ -100,6 +102,8 @@ TEST_F(SystemDomainTest, JobExecution) {
     system_.addDevice(device1);
     system_.assigning_jobs();
     system_.Do_job_minutes(10);
+
+    system_.clear();
     EXPECT_TRUE(device1->getCurrentJob() == nullptr);
     EXPECT_EQ(device1->getWorkload(), 0);
 }
@@ -109,16 +113,17 @@ TEST_F(SystemDomainTest, SystemReset) {
     Device* device1 = new Device();
     system_.addJob(job1);
     system_.addDevice(device1);
-    system_.assigning_jobs();
+
     system_.clear();
     EXPECT_TRUE(system_.jobs.empty());
     EXPECT_TRUE(system_.devices.empty());
 }
 
 TEST_F(SystemDomainTest, ContractViolations) {
-    // Check if the contracts are violated
 
-
-
+    EXPECT_DEATH(system_.addJob(nullptr), "Job is nullptr");
+    EXPECT_DEATH(system_.addDevice(nullptr), "Device is nullptr");
+    EXPECT_DEATH(system_.Do_job_minutes(-1), "Minutes can't be negative");
+    EXPECT_DEATH(system_.assigning_jobs(),"No jobs to assign");
 
 }
