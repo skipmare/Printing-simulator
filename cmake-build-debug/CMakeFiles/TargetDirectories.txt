@@ -1,4 +1,0 @@
-F:/desktop/PSE_2023-2023/cmake-build-debug/CMakeFiles/release_target.dir
-F:/desktop/PSE_2023-2023/cmake-build-debug/CMakeFiles/debug_target.dir
-F:/desktop/PSE_2023-2023/cmake-build-debug/CMakeFiles/edit_cache.dir
-F:/desktop/PSE_2023-2023/cmake-build-debug/CMakeFiles/rebuild_cache.dir
