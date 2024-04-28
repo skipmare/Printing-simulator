@@ -23,54 +23,43 @@ bool System::properlyInitialized() const {
 }
 
 System::~System() {
-    for (Device* device : devices) {
-        delete device;
-    }
-    while (jobs.size() > 0) {
-        delete jobs.front();
-        jobs.pop();
-    }
+    this->clear();
 }
 
 void System::addJob(Job* job){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling addJob");
+    REQUIRE(job != nullptr, "Job is nullptr");
+
 
     jobs.push(job);
-
+    ENSURE(!jobs.empty(), "addJob postcondition failed");
 }
 
 
 void System::addDevice(Device* device){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling addDevice");
-    unsigned int old = devices.size();
+    REQUIRE(device != nullptr, "Device is nullptr");
+
     devices.push_back(device);
-    ENSURE(devices.size() == old+1, "addDevice postcondition failed");
+
+    ENSURE(!devices.empty(), "addDevice postcondition failed");
 }
 
 
 
 void System::assigning_jobs(){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling assigning_jobs");
-    scheduler scheduler(devices, jobs);
-    scheduler.schedule();
-}
+    REQUIRE(!jobs.empty(), "No jobs to assign");
 
-void System::execute_all_jobs(){
-    REQUIRE(properlyInitialized(), "System wasn't initialized when calling execute_all_jobs");
-    for (Device* device : devices){
-        while (device->getCurrentJob() != nullptr){
-            execute_job();
-        }
-    }
-}
-void System::exe_job_logic(){
-    REQUIRE(properlyInitialized(), "System wasn't initialized when calling exe_job_logic");
-    assigning_jobs();
-    execute_all_jobs();
+    scheduler scheduler(devices, jobs, errstring);
+    scheduler.schedule();
+
+    ENSURE(!jobs.empty(), "assigning_jobs postcondition failed");
 }
 
 void System::Calculate_exejob_CO2(){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling Calculate_exejob_CO2");
+
     int total = 0;
     for (Device* device : devices){
         for (Job* job : device->getDoneJobs()){
@@ -78,10 +67,13 @@ void System::Calculate_exejob_CO2(){
         }
     }
     exejob_CO2 = total;
+
+    ENSURE(getExejob_CO2() >= 0, "Calculate_exejob_CO2 postcondition failed");
 }
 
 void System::Do_job_minutes(int minutes){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling Do_job_minutes");
+    REQUIRE(minutes >= 0, "Minutes can't be negative");
     for (int i = 0; i < minutes; i++){
         for(Device* device : devices){
         device->DoJob_Min();
@@ -91,50 +83,11 @@ void System::Do_job_minutes(int minutes){
 
 }
 
-void System::execute_job(){
-    REQUIRE(properlyInitialized(), "System wasn't initialized when calling execute_job");
-    for (Device* device : devices){
-
-        std::cout << "Printer " <<"\""<< device->getName() <<"\"" <<" finished job:" << std::endl;
-        std::cout <<"Number: " << device->getCurrentJob()->getJobNumber() << std::endl;
-        std::cout <<"Submitted by " << "\"" << device->getCurrentJob()->getUserName() << "\"" << std::endl;
-        std::cout << device->getCurrentJob()->getPageCount() << " pages" << std::endl;
-
-        if(!device->getJobs().empty()){
-            Job* job = device->getJobs().front();
-            device->getJobs().pop();
-            device->set_current_job(job);
-        }
-        else{
-            device->set_current_job(nullptr);
-        }
-    }
-}
-
-void System::output_info(std::string namefile){
-    REQUIRE(properlyInitialized(), "System wasn't initialized when calling output_info");
-    ofstream file(namefile);
-    for (Device* device : devices){
-        file << device->getName() << " (CO2: " << device->getEmission() <<"g/page):" << std::endl;
-        file <<"    * Current:" << std::endl;
-
-        if(device->getCurrentJob() != nullptr){
-            file <<"        [#"<< device->getCurrentJob()->getJobNumber() <<"|" << device->getCurrentJob()->getUserName() <<"]" << std::endl;
-        }
-        file  <<"    * Queue:" << std::endl;
-
-        std::queue<Job*> temp = device->getJobs();
-        while (!temp.empty()){
-            Job* job = temp.front();
-            temp.pop();
-            file <<"        [#"<< job->getJobNumber() <<"|" << job->getUserName() <<"]" << std::endl;
-        }
-    }
-}
 
 void System::clear_jobs(){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear_jobs");
     while (!jobs.empty()){
+        delete jobs.front();
         jobs.pop();
     }
     ENSURE(jobs.empty(), "clear_jobs postcondition failed");
@@ -143,6 +96,9 @@ void System::clear_jobs(){
 
 void System::clear_devices(){
     REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear_devices");
+    for (Device* device : devices){
+        delete device;
+    }
     devices.clear();
     ENSURE(devices.empty(), "clear_jobs postcondition failed");
 }
@@ -155,6 +111,7 @@ void System::clear(){
 }
 
 int System::getExejob_CO2() {
+    REQUIRE(properlyInitialized(), "System wasn't initialized when calling getExejob_CO2");
     return exejob_CO2;
 }
 

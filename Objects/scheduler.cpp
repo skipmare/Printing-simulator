@@ -4,20 +4,20 @@
 
 #include "scheduler.h"
 #include "../DesignByContract.h"
-#include "BWPrinter.h"
-#include "ColorPrinter.h"
 
-scheduler::scheduler(std::vector<Device *> &devices, std::queue<Job *> jobs) {
-    _initCheck = this;
+scheduler::scheduler(std::vector<Device *> &devices, std::queue<Job *> &jobs, std::string & errorStream)
+        : errorStream(errorStream){
+_initCheck = this;
     this->devices = devices;
     this->jobs = jobs;
+
 
     for (Device* device : devices) {
         if (device->getType() == "scan") {
             this->Scanners.push_back(device);
         } else if (device->getType() == "bw") {
             this->Printers.push_back(device);
-        } else if (device->getType() == "color") { // Corrected here
+        } else if (device->getType() == "color") {
             this->ColorPrinters.push_back(device);
         }
     }
@@ -32,57 +32,50 @@ void scheduler::schedule() {
     while (!jobs.empty()) {
         Job* job = jobs.front();
         jobs.pop();
-        if (job->getType() == "scan") {
-            Device* leastLoadedScanner = this->getLeastWorkloadScanner();
-            if (leastLoadedScanner != nullptr) {
-                leastLoadedScanner->give_job(job);
-            }
-        } else if (job->getType() == "bw") {
-            Device* leastLoadedBWPrinter = this->getLeastWorkloadBWPrinter();
-            if (leastLoadedBWPrinter != nullptr) {
-                leastLoadedBWPrinter->give_job(job);
-            }
-        } else if (job->getType() == "color") {
-            Device* leastLoadedColorPrinter = this->getLeastWorkloadColorPrinter();
-            if (leastLoadedColorPrinter != nullptr) {
-                leastLoadedColorPrinter->give_job(job);
-            }
+        Device* device;
+        std::string type = job->getType();
+        std::vector<Device*> devices_to_use;
+        int cap = 0;
+        if (type == "scan") {
+            devices_to_use = this->Scanners;
+            cap = this->scanEmmisionCap;
+        } else if (type == "bw") {
+            devices_to_use = this->Printers;
+            cap = this->bwEmmisionCap;
+        } else if (type == "color") {
+            devices_to_use = this->ColorPrinters;
+            cap = this->colorEmmisionCap;
         }
+        if (devices_to_use.empty()) {
+            errorStream += "No device available for job: " + std::to_string(job->getJobNumber())  + '\n';
+            continue;
+        }
+        if (devices_to_use.size() > 1) {
+            device = LeastWorkloadDevice(devices_to_use, cap);
+        } else {
+            device = devices_to_use[0];
+        }
+        if (device == nullptr || device->getEmission() > cap){
+            errorStream += "Devices exceed the emmision cap for job: " + std::to_string(job->getJobNumber())  + '\n';
+            continue;
+        }
+        device->give_job(job);
     }
-    ENSURE(jobs.empty(), "schedule postcondition failed");
 }
 
 
-Device *scheduler::getLeastWorkloadScanner() {
+Device *scheduler::LeastWorkloadDevice(const std::vector<Device *>& devices_to_use, int cap) {
     REQUIRE(properlyInitialized(), "scheduler wasn't initialized when calling getLeastWorkloadScanner");
-    Device* leastLoadedScanner = nullptr;
-    for (Device* scanner : Scanners) {
-        if (leastLoadedScanner == nullptr || scanner->getWorkload() < leastLoadedScanner->getWorkload()) {
-            leastLoadedScanner = scanner;
+    Device* leastLoadedDevice = nullptr;
+    for (Device* device : devices_to_use) {
+        if (device->getEmission() > cap) {
+            continue;
+        }
+        if (leastLoadedDevice == nullptr || device->getWorkload() * device->getEmission() < leastLoadedDevice->getWorkload() * leastLoadedDevice->getEmission()) {
+            leastLoadedDevice = device;
         }
     }
-    return leastLoadedScanner;
+
+    return leastLoadedDevice;
 }
 
-
-Device *scheduler::getLeastWorkloadBWPrinter() {
-    REQUIRE(properlyInitialized(), "scheduler wasn't initialized when calling getLeastWorkloadBWPrinter");
-    Device* leastLoadedBWPrinter = nullptr;
-    for (Device* bwPrinter : Printers) {
-        if (leastLoadedBWPrinter == nullptr || bwPrinter->getWorkload() < leastLoadedBWPrinter->getWorkload()) {
-            leastLoadedBWPrinter = bwPrinter;
-        }
-    }
-    return leastLoadedBWPrinter;
-}
-
-Device *scheduler::getLeastWorkloadColorPrinter() {
-    REQUIRE(properlyInitialized(), "scheduler wasn't initialized when calling getLeastWorkloadColorPrinter");
-    Device* leastLoadedColorPrinter = nullptr;
-    for (Device* colorPrinter : ColorPrinters) {
-        if (leastLoadedColorPrinter == nullptr || colorPrinter->getWorkload() < leastLoadedColorPrinter->getWorkload()) {
-            leastLoadedColorPrinter = colorPrinter;
-        }
-    }
-    return leastLoadedColorPrinter;
-}

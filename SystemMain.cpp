@@ -10,9 +10,9 @@ int main() {
     System system;
     Log logger = Log(&system);
     SystemImporter::importSystem("test.xml", cerr, system);
-    system.output_info("output.txt");
-    system.Do_job_minutes(10);
+    system.Do_job_minutes(1);
     logger.logStatusInfo(true);
     logger.logJobInfo(true);
+    logger.logerror();
 }
 

@@ -8,7 +8,6 @@
 
 class ColorPrinter : public Device {
     ColorPrinter* _initCheck;
-    int emission_cap;
     std::string type;
 
 public:

@@ -89,5 +89,9 @@ void Log::logJobInfo(bool toFile) {
 
 }
 
+void Log::logerror() {
+    std::cout << _system->getErrorString();
+}
+
 
 

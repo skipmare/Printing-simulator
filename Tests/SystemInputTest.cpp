@@ -33,7 +33,7 @@ protected:
 
 
 TEST_F(SystemInputTest, InputHappyDay) {
-    ASSERT_TRUE(DirectoryExists("../TestInput"));
+    ASSERT_TRUE(DirectoryExists("../TestInput/"));
 
     ofstream myfile;
     SuccessEnum importResult;

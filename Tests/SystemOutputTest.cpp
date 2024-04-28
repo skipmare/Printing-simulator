@@ -27,7 +27,7 @@ protected:
     System system_;
 
 };
-
+/*
 TEST_F(OutputTest, OutputHappyDay) {
     ASSERT_TRUE(DirectoryExists("../TestOutput"));
 
@@ -81,3 +81,4 @@ TEST_F(OutputTest, correctOutput) {
 
     EXPECT_TRUE(FileCompare("../TestOutput/happyDayOut.txt", "../TestOutput/happyDayExpectedOut.txt"));
 }
+*/

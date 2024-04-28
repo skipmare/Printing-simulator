@@ -23,17 +23,19 @@ class scheduler {
     std::vector<Device*> Printers;
     std::vector<Device*> ColorPrinters;
 
+    int bwEmmisionCap = 8;
+    int colorEmmisionCap = 23;
+    int scanEmmisionCap = 12;
+
+    std::string& errorStream;
+
 public:
-    scheduler(std::vector<Device*> & devices, std::queue<Job*> jobs);
+    scheduler(std::vector<Device*> & devices, std::queue<Job*> & jobs, std::string & errorStream);
     bool properlyInitialized() const;
 
     void schedule();
 
-    Device* getLeastWorkloadScanner();
-
-    Device* getLeastWorkloadBWPrinter();
-
-    Device* getLeastWorkloadColorPrinter();
+    Device* LeastWorkloadDevice(const std::vector<Device *>& devices_to_use,  int cap);
 
 
 

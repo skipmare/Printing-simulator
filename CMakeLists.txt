@@ -45,7 +45,8 @@ set(DEBUG_SOURCE_FILES ./Tests/SystemInputTest.cpp ./Tests/SystemTests.cpp Objec
         Objects/ColorPrinter.cpp
         Objects/Scanner.cpp
         Objects/scheduler.cpp
-        Objects/log.cpp)
+        Objects/log.cpp
+        Tests/SystemDomainTest.cpp)
 
 # Create RELEASE target
 add_executable(release_target ${RELEASE_SOURCE_FILES})

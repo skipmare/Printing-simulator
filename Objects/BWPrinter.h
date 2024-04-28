@@ -10,7 +10,6 @@
 
 class BWPrinter : public Device {
     BWPrinter* _initCheck;
-    int emission_cap;
     std::string type;
 
 public:

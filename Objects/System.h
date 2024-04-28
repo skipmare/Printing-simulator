@@ -3,7 +3,6 @@
 //
 #include "iostream"
 #include "queue"
-#include "stack"
 #include "vector"
 #include "fstream"
 
@@ -20,84 +19,85 @@ public:
     System* _initCheck = this;
     queue<Job*> jobs;
     vector<Device*> devices;
-
+    std::string errstring = "";
     int exejob_CO2;
-
-    int Add_Job_Queue_index = 0;
 
 
     ~System();
 
     bool properlyInitialized() const;
 
+
+
     /**
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling addJob");
-     * ENSURE(jobs.size() == old + 1, "addJob postcondition failed");
+     * REQUIRE(job != nullptr, "Job is nullptr");
+     * ENSURE(!jobs.empty(), "addJob postcondition failed");
      */
     void addJob(Job* job);
 
 
     /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling getJobs");
-     * ENSURE(jobs.size() == old(jobs.size()), "getJobs postcondition failed");
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling addDevice");
+     * REQUIRE(device != nullptr, "Device is nullptr");
+     * ENSURE(!devices.empty(), "addDevice postcondition failed");
      */
     void addDevice(Device* device);
 
 
     /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling getDevices");
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling assigning_jobs");
+     * ENSURE(!jobs.empty(), "assigning_jobs postcondition failed");
      */
     void assigning_jobs();
 
-    /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling assigning_jobs");
-     */
-    void execute_all_jobs();
 
     /**
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling execute_all_jobs");
-     */
-    void execute_job();
-    /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling execute_job");
-     */
-    void exe_job_logic();
-    /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling exe_job_logic");
+     * REQUIRE(minute >= 0, "minute can't be negative");
      */
     void Do_job_minutes(int minutes);
-    /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling Do_job_minutes");
-     */
-    void output_info(std::string namefile);
-    /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling output_info");
-     * ENSURE(jobs.empty(), "output_info postcondition failed");
-     */
 
-    std::string get_statusinfo();
-    /**
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling get_statusinfo");
-     */
 
-    void Calculate_exejob_CO2();
     /**
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling Calculate_exejob_CO2");
+     * ENSURE(getExejob_CO2() >= 0, "Calculate_exejob_CO2 postcondition failed");
+     */
+    void Calculate_exejob_CO2();
+
+    /*
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling getExejob_CO2");
      */
      int getExejob_CO2();
 
-
-    void clear_jobs();
     /*
      * REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear_jobs");
      * ENSURE(devices.empty(), "clear_jobs postcondition failed");
      */
-    void clear_devices();
+    void clear_jobs();
+
+
     /*
-     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear_devices");
+    * REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear_devices");
+    * ENSURE(jobs.empty() && devices.empty(), "clear postcondition failed");
+    */
+
+    void clear_devices();
+
+
+    /*
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling clear");
      * ENSURE(jobs.empty() && devices.empty(), "clear postcondition failed");
      */
     void clear();
+
+
+    /*
+     * REQUIRE(properlyInitialized(), "System wasn't initialized when calling getErrorStream");
+     */
+    std::string & getErrorString() {
+        return errstring;
+    }
 
 
 };

@@ -23,7 +23,7 @@ public:
 
     void logJobInfo(bool toFile);
 
-    void logerror(bool toFile);
+    void logerror();
 
     bool properlyInitialized() const;
 };

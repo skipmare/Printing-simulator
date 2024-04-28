@@ -8,7 +8,6 @@
 
 class Scanner : public Device{
     Scanner* _initCheck;
-    int emission_cap;
     std::string type;
 
 public:
